@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Lab — ChronoTech 智能能力展厅</title>
+  <meta name="description" content="探索 ChronoTech AI 能力展厅：智能客服、多模态视觉、NLP 文本分析、RAG 知识库、Agent 工作流">
+  <link rel="icon" href="images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/ai-lab.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/chat-widget.css">
+</head>
+<body>
+
+  <!-- 导航栏 -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="logo-icon"><i class="fa-solid fa-stopwatch"></i></div>
+        <span>ChronoTech</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">首页</a></li>
+        <li><a href="products.html" class="nav-link">产品中心</a></li>
+        <li><a href="about.html" class="nav-link">关于我们</a></li>
+        <li><a href="contact.html" class="nav-link">联系我们</a></li>
+        <li><a href="ai-lab.html" class="nav-link active">🧪 AI Lab</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="lang-toggle">
+          <button class="lang-btn active" data-lang="zh">中</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero 区域 -->
+  <section class="page-hero">
+    <div class="hero-badge"><i class="fa-solid fa-flask"></i> AI 能力展厅</div>
+    <h1 class="text-gradient">探索 AI 无限可能</h1>
+    <p class="hero-subtitle">以 ChronoTech 智能手表为场景，深度展示大模型、NLP、多模态、RAG 与智能体技术栈</p>
+  </section>
+
+  <!-- Demo 卡片网格 -->
+  <section class="section">
+    <div class="container">
+      <div class="lab-grid">
+
+        <!-- 智能客服 Agent -->
+        <a href="demo-chat.html" class="lab-card fade-in-up" id="card-chat">
+          <div class="lab-card-icon">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="lab-card-badge">核心能力</div>
+          <h3>智能客服 Agent</h3>
+          <p>多轮对话 · 工具调用 · 思考链可视化</p>
+          <ul class="lab-card-features">
+            <li><i class="fa-solid fa-check"></i> SSE 流式对话</li>
+            <li><i class="fa-solid fa-check"></i> 对话记忆管理</li>
+            <li><i class="fa-solid fa-check"></i> 产品查询/对比工具</li>
+            <li><i class="fa-solid fa-check"></i> Agent 推理可视化</li>
+          </ul>
+          <div class="lab-card-tech">
+            <span>Spring AI</span><span>ChatClient</span><span>Tool Calling</span>
+          </div>
+          <div class="lab-card-action">体验 Demo <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+
+        <!-- 多模态视觉 -->
+        <a href="demo-vision.html" class="lab-card fade-in-up" id="card-vision">
+          <div class="lab-card-icon">
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <div class="lab-card-badge">多模态</div>
+          <h3>图文理解 Vision</h3>
+          <p>多图分析 · 视觉检索 · 结构化识别</p>
+          <ul class="lab-card-features">
+            <li><i class="fa-solid fa-check"></i> 单/多图联合问答</li>
+            <li><i class="fa-solid fa-check"></i> 纯 OCR 及串联分析</li>
+            <li><i class="fa-solid fa-check"></i> 图片结构化属性描述</li>
+            <li><i class="fa-solid fa-check"></i> 向量搜图引擎展示</li>
+          </ul>
+          <div class="lab-card-tech">
+            <span>qwen-vl</span><span>多模态消息</span><span>流式输出</span>
+          </div>
+          <div class="lab-card-action">体验 Demo <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+
+        <!-- NLP 工具箱 -->
+        <a href="demo-nlp.html" class="lab-card fade-in-up" id="card-nlp">
+          <div class="lab-card-icon">
+            <i class="fa-solid fa-language"></i>
+          </div>
+          <div class="lab-card-badge">自然语言处理</div>
+          <h3>NLP 引擎服务</h3>
+          <p>短文本功能 · 长文档处理 · 动态 Pipeline编排</p>
+          <ul class="lab-card-features">
+            <li><i class="fa-solid fa-check"></i> 摘要·情感·翻译·关键词</li>
+            <li><i class="fa-solid fa-check"></i> NER 实体抽取及标注</li>
+            <li><i class="fa-solid fa-check"></i> 意图识别（LLM与规则双引擎）</li>
+            <li><i class="fa-solid fa-check"></i> 大篇幅长文档 QA 分段处理</li>
+          </ul>
+          <div class="lab-card-tech">
+            <span>Prompt Engineering</span><span>JSON 输出</span>
+          </div>
+          <div class="lab-card-action">体验 Demo <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+
+        <!-- RAG 知识库 -->
+        <a href="demo-rag.html" class="lab-card fade-in-up" id="card-rag">
+          <div class="lab-card-icon">
+            <i class="fa-solid fa-book-open"></i>
+          </div>
+          <div class="lab-card-badge">检索增强</div>
+          <h3>RAG 知识库</h3>
+          <p>文档上传 · 向量检索 · 来源追溯</p>
+          <ul class="lab-card-features">
+            <li><i class="fa-solid fa-check"></i> 文档自动解析分块</li>
+            <li><i class="fa-solid fa-check"></i> 语义向量检索</li>
+            <li><i class="fa-solid fa-check"></i> 检索来源可视化</li>
+            <li><i class="fa-solid fa-check"></i> 动态上传文档</li>
+          </ul>
+          <div class="lab-card-tech">
+            <span>VectorStore</span><span>Tika</span><span>Embedding</span>
+          </div>
+          <div class="lab-card-action">体验 Demo <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+
+        <!-- Agent 工作流 -->
+        <a href="demo-agent.html" class="lab-card fade-in-up" id="card-agent">
+          <div class="lab-card-icon">
+            <i class="fa-solid fa-diagram-project"></i>
+          </div>
+          <div class="lab-card-badge">智能体</div>
+          <h3>Agent 工作流</h3>
+          <p>多步推理 · 自主规划 · 任务编排</p>
+          <ul class="lab-card-features">
+            <li><i class="fa-solid fa-check"></i> ReAct 循环推理</li>
+            <li><i class="fa-solid fa-check"></i> 多工具自主调用</li>
+            <li><i class="fa-solid fa-check"></i> 步骤流程图可视化</li>
+            <li><i class="fa-solid fa-check"></i> 对比报告自动生成</li>
+          </ul>
+          <div class="lab-card-tech">
+            <span>Agent</span><span>ReAct</span><span>工具编排</span>
+          </div>
+          <div class="lab-card-action">体验 Demo <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+
+        <!-- 能力评测 -->
+        <div class="lab-card lab-card-coming fade-in-up" id="card-benchmark">
+          <div class="lab-card-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <div class="lab-card-badge">即将上线</div>
+          <h3>能力评测</h3>
+          <p>性能指标 · 效果对比 · 实时监控</p>
+          <ul class="lab-card-features">
+            <li><i class="fa-solid fa-check"></i> 模型响应延迟</li>
+            <li><i class="fa-solid fa-check"></i> RAG 检索准确率</li>
+            <li><i class="fa-solid fa-check"></i> 工具调用成功率</li>
+            <li><i class="fa-solid fa-check"></i> 请求日志流</li>
+          </ul>
+          <div class="lab-card-tech">
+            <span>Benchmark</span><span>Metrics</span>
+          </div>
+          <div class="lab-card-action">敬请期待</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 技术栈展示 -->
+  <section class="section tech-stack-section">
+    <div class="container">
+      <div class="section-title fade-in-up">
+        <h2 class="text-gradient">技术栈</h2>
+        <p>构建本平台所使用的核心技术</p>
+      </div>
+      <div class="tech-stack-grid fade-in-up">
+        <div class="tech-stack-item">
+          <i class="fa-brands fa-java"></i>
+          <span>Java 21</span>
+        </div>
+        <div class="tech-stack-item">
+          <i class="fa-solid fa-leaf"></i>
+          <span>Spring Boot 3.4</span>
+        </div>
+        <div class="tech-stack-item">
+          <i class="fa-solid fa-brain"></i>
+          <span>Spring AI 1.0</span>
+        </div>
+        <div class="tech-stack-item">
+          <i class="fa-solid fa-cloud"></i>
+          <span>DashScope</span>
+        </div>
+        <div class="tech-stack-item">
+          <i class="fa-solid fa-database"></i>
+          <span>VectorStore</span>
+        </div>
+        <div class="tech-stack-item">
+          <i class="fa-solid fa-code"></i>
+          <span>SSE Stream</span>
+        </div>
+        <div class="tech-stack-item">
+          <i class="fa-solid fa-wrench"></i>
+          <span>Tool Calling</span>
+        </div>
+        <div class="tech-stack-item">
+          <i class="fa-solid fa-image"></i>
+          <span>qwen-vl</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-brand">
+            <div class="logo-icon"><i class="fa-solid fa-stopwatch"></i></div>
+            <span>ChronoTech</span>
+          </div>
+          <p>打破传统，重新定义腕上科技装备。</p>
+        </div>
+        <div class="footer-links-col">
+          <h4>快速链接</h4>
+          <ul>
+            <li><a href="products.html">产品中心</a></li>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+            <li><a href="ai-lab.html">AI Lab</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>支持服务</h4>
+          <ul>
+            <li><a href="#">产品说明书</a></li>
+            <li><a href="#">保修政策</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>关注我们</h4>
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-weixin"></i></a>
+            <a href="#"><i class="fa-brands fa-weibo"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ChronoTech. All rights reserved. | AI Lab Demo</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/chat-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+FROM nginx:alpine
+
+# 复制前端静态文件到 Nginx
+COPY web/ /usr/share/nginx/html/
+
+# 暴露 80 端口
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

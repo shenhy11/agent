@@ -1,0 +1,118 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: agent-server
+
+  # 文件上传配置（多模态需要）
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 20MB
+
+  # ===== Redis 配置 =====
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 3000ms
+
+  # ===== Spring AI 配置 =====
+  ai:
+    # 通义千问模型配置（通过 Spring AI Alibaba）
+    dashscope:
+      api-key: sk-45860ea7946e4162a8ed67610dcb774b
+      chat:
+        options:
+          model: qwen-plus
+          temperature: 0.7
+
+    # OpenAI 模型配置（备用，现已完全禁用避免多模型冲突）
+    openai:
+      enabled: false
+      api-key: disabled
+
+# ===== 应用自定义配置 =====
+agent:
+  # 对话配置
+  chat:
+    # 系统提示词
+    system-prompt: |
+      你是 ChronoTech 智能手表品牌的官方 AI 客服助手。
+      请根据用户的问题，结合知识库中的信息和可用工具，提供准确、友好的回答。
+      如果你不确定答案，请如实告知用户，不要编造信息。
+      回答要简洁明了，语言要亲切自然，适当使用 emoji。
+    # 对话记忆保留轮数
+    memory-max-messages: 20
+    # 工作记忆窗口（最近 N 轮保持原文，超出部分压缩为摘要）
+    memory-window-size: 10
+    # 流式响应超时（秒）
+    stream-timeout: 60
+
+  # RAG 高级配置
+  rag:
+    # 分块策略：token / recursive / semantic
+    chunking-strategy: token
+    # 分块大小（tokens）
+    chunk-size: 800
+    # 分块重叠（tokens）
+    chunk-overlap: 200
+    # 语义分块相似度阈值（仅 semantic 策略生效）
+    semantic-threshold: 0.5
+    # 检索返回的 Top-K 文档（每路）
+    top-k: 5
+    # 相似度阈值
+    similarity-threshold: 0.6
+    # 是否启用 Query 改写
+    query-rewrite-enabled: true
+    # 是否启用 Hybrid Search（BM25 + 向量双路）
+    hybrid-search-enabled: true
+    # RRF 融合参数 K
+    rrf-k: 60
+    # 是否启用 LLM Reranking
+    rerank-enabled: true
+    # Rerank 后返回的 Top-N
+    rerank-top-n: 3
+    # Rerank 超时（毫秒），超时降级为 RRF 结果
+    rerank-timeout-ms: 5000
+
+  # 视觉模型配置（qwen-vl-max）
+  vision:
+    # 视觉模型名称
+    model: qwen-vl-max
+    # 推理温度
+    temperature: 0.3
+    # 超时保护（秒）
+    timeout-seconds: 30
+    # 单次最大图片数量
+    max-images: 3
+    # 图片 base64 Redis 缓存 TTL（分钟）
+    image-cache-ttl-minutes: 30
+    # 大图转存阈值（字节，超过此大小走转存策略）
+    large-image-threshold-bytes: 512000
+
+  # Agent 推理策略配置
+  agent-strategy:
+    # ReAct 最大推理步数
+    max-steps: 10
+    # 工具调用超时（秒）
+    tool-timeout: 30
+    # 工具调用失败后最大重试次数
+    tool-max-retries: 2
+
+  # 工具配置
+  tool:
+    # 是否启用 MCP
+    mcp-enabled: false
+    # 工具调用超时（秒）
+    call-timeout: 30
+
+# ===== 日志配置 =====
+logging:
+  level:
+    com.agent: DEBUG
+    org.springframework.ai: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+

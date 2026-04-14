@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChronoTech - 智能科技 定义未来 | 先锋电子手表</title>
+  <!-- 字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/chat-widget.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="logo-icon"><i class="fa-solid fa-stopwatch"></i></div>
+        <span>ChronoTech</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link active" data-i18n="nav_home">首页</a></li>
+        <li><a href="products.html" class="nav-link" data-i18n="nav_products">产品中心</a></li>
+        <li><a href="about.html" class="nav-link" data-i18n="nav_about">关于我们</a></li>
+        <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">联系我们</a></li>
+        <li><a href="ai-lab.html" class="nav-link">🧪 AI Lab</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="lang-toggle">
+          <button class="lang-btn active" data-lang="zh">中</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="text-gradient">REDEFINE TIME</h1>
+        <p class="hero-subtitle" data-i18n="hero_sub">智能科技，定义未来。探索 ChronoTech 全新系列电子腕表，将极致工艺与人工智能完美融合。</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary" data-i18n="hero_btn_explore">探索产品</a>
+          <a href="#" class="btn btn-secondary" data-i18n="hero_btn_video"><i class="fa-solid fa-play" style="margin-right:8px;"></i> 观看视频</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <!-- 漂浮手表占位图 -->
+        <img src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&q=80&w=600" alt="ChronoTech Smartwatch" class="hero-watch-img" style="border-radius: 50%; opacity: 0.9; mix-blend-mode: screen;">
+      </div>
+    </div>
+  </section>
+
+  <!-- 亮点产品展示 -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-title fade-in-up">
+        <h2 class="text-gradient" data-i18n="sec_products_title">探索巅峰之作</h2>
+        <p data-i18n="sec_products_sub">无论专业运动、商务出行还是极限户外，总有一款适合你。</p>
+      </div>
+      <div class="products-grid">
+        <!-- Card 1 -->
+        <div class="product-card">
+          <span class="product-badge">热销推荐</span>
+          <div class="img-wrapper">
+            <!-- 替换真实 URL -->
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=400" alt="Sport X2 Pro" style="border-radius: 10px;">
+          </div>
+          <h3>Sport X2 Pro</h3>
+          <p class="text-muted" data-i18n="prod_sport_sub">旗舰运动，无惧挑战</p>
+          <div class="product-price">¥1,999</div>
+          <a href="#" class="btn btn-secondary" data-i18n="btn_detail">查看详情</a>
+        </div>
+        <!-- Card 2 -->
+        <div class="product-card" style="transform: scale(1.05); z-index: 10; border-color: var(--color-accent-purple);">
+          <span class="product-badge" style="color:var(--color-accent-purple); border-color:var(--color-accent-purple);">旗舰新品</span>
+          <div class="img-wrapper">
+            <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80&w=400" alt="Elite E2 Ultra" style="border-radius: 10px;">
+          </div>
+          <h3 class="text-gradient">Elite E2 Ultra</h3>
+          <p class="text-muted" data-i18n="prod_elite_sub">钛合金精密锻造，商务首选</p>
+          <div class="product-price">¥3,999</div>
+          <a href="#" class="btn btn-primary" data-i18n="btn_detail">查看详情</a>
+        </div>
+        <!-- Card 3 -->
+        <div class="product-card">
+          <div class="img-wrapper">
+            <img src="https://images.unsplash.com/photo-1617043786394-f977fa12eddf?auto=format&fit=crop&q=80&w=400" alt="Rugged R2 Titan" style="border-radius: 10px;">
+          </div>
+          <h3>Rugged R2 Titan</h3>
+          <p class="text-muted" data-i18n="prod_rugged_sub">极限环境，强悍生存</p>
+          <div class="product-price">¥2,999</div>
+          <a href="#" class="btn btn-secondary" data-i18n="btn_detail">查看详情</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 品牌价值 -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title fade-in-up">
+        <h2 class="text-gradient" data-i18n="sec_value_title">核心科技</h2>
+        <p data-i18n="sec_value_sub">由内而外，精益求精的工艺与算法引擎</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card glass-panel">
+          <div class="icon-box"><i class="fa-solid fa-battery-full"></i></div>
+          <h4 data-i18n="val_battery">30天超长续航</h4>
+          <p class="text-muted" data-i18n="val_battery_sub">自研低功耗芯片，告别电量焦虑</p>
+        </div>
+        <div class="value-card glass-panel">
+          <div class="icon-box"><i class="fa-solid fa-water"></i></div>
+          <h4 data-i18n="val_water">10ATM 深度防水</h4>
+          <p class="text-muted" data-i18n="val_water_sub">支持 100米深潜，无惧任何水域</p>
+        </div>
+        <div class="value-card glass-panel">
+          <div class="icon-box"><i class="fa-solid fa-heart-pulse"></i></div>
+          <h4 data-i18n="val_health">AI 健康监测</h4>
+          <p class="text-muted" data-i18n="val_health_sub">全天候心率血氧追踪与睡眠分析</p>
+        </div>
+        <div class="value-card glass-panel">
+          <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+          <h4 data-i18n="val_gps">全星系精准定位</h4>
+          <p class="text-muted" data-i18n="val_gps_sub">GPS+北斗双频独立定位，永不迷失</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 数据成就区块 -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3>2,000,000+</h3>
+          <p data-i18n="stat_users">全球信赖用户</p>
+        </div>
+        <div class="stat-item">
+          <h3>50+</h3>
+          <p data-i18n="stat_patents">自研核心专利</p>
+        </div>
+        <div class="stat-item">
+          <h3>35</h3>
+          <p data-i18n="stat_countries">覆盖国家/地区</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-brand" style="font-size: 1.5rem;">
+            <div class="logo-icon" style="width: 24px; height: 24px; font-size: 0.8rem;"><i class="fa-solid fa-stopwatch"></i></div>
+            <span>ChronoTech</span>
+          </div>
+          <p data-i18n="footer_desc">打破传统，重新定义腕上科技装备。</p>
+        </div>
+        <div>
+          <h4 class="footer-title" data-i18n="footer_links">快速链接</h4>
+          <div class="footer-links">
+            <a href="#" class="footer-link" data-i18n="nav_products">产品中心</a>
+            <a href="#" class="footer-link" data-i18n="nav_about">关于我们</a>
+            <a href="#" class="footer-link" data-i18n="nav_news">新闻动态</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title" data-i18n="footer_support">支持服务</h4>
+          <div class="footer-links">
+            <a href="#" class="footer-link" data-i18n="sup_manual">产品说明书</a>
+            <a href="#" class="footer-link" data-i18n="sup_warranty">保修政策</a>
+            <a href="#" class="footer-link" data-i18n="nav_contact">联系我们</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title" data-i18n="footer_social">关注我们</h4>
+          <div class="footer-links" style="flex-direction: row; gap: var(--space-4); font-size: 1.5rem;">
+            <a href="#" class="footer-link"><i class="fa-brands fa-weixin"></i></a>
+            <a href="#" class="footer-link"><i class="fa-brands fa-weibo"></i></a>
+            <a href="#" class="footer-link"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 ChronoTech Technologies Co., Ltd.</span>
+        <span>京ICP备20268888号</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 智能客服组件容器 (由 JS 动态渲染或包含) -->
+  <div id="ai-chat-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/chat-widget.js"></script>
+</body>
+</html>

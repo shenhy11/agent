@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAG 知识库 — ChronoTech AI Lab</title>
+  <meta name="description" content="RAG 知识库问答：文档上传、向量检索、来源追溯可视化">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/ai-lab.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="logo-icon"><i class="fa-solid fa-stopwatch"></i></div>
+        <span>ChronoTech</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">首页</a></li>
+        <li><a href="products.html" class="nav-link">产品中心</a></li>
+        <li><a href="about.html" class="nav-link">关于我们</a></li>
+        <li><a href="contact.html" class="nav-link">联系我们</a></li>
+        <li><a href="ai-lab.html" class="nav-link active">🧪 AI Lab</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="demo-page">
+    <div class="container">
+      <a href="ai-lab.html" class="demo-back"><i class="fa-solid fa-arrow-left"></i> 返回 AI Lab</a>
+      <div class="demo-header">
+        <h1><i class="fa-solid fa-book-open" style="color:var(--accent-cyan)"></i> RAG 知识库</h1>
+        <p>文档上传 → 向量化分块 → 语义检索 → 增强生成 — 完整的 RAG 管道演示</p>
+      </div>
+
+      <div class="preset-questions" style="margin-top:1.5rem;">
+        <button class="preset-btn" data-question="Sport X2 Pro 的续航时间是多少天？">⚡ 产品续航</button>
+        <button class="preset-btn" data-question="手表保修期是多久？屏幕碎了怎么办？">🔧 保修政策</button>
+        <button class="preset-btn" data-question="哪些型号支持NFC支付？">💳 NFC支付</button>
+        <button class="preset-btn" data-question="如何申请以旧换新？最高可以抵扣多少？">♻️ 以旧换新</button>
+      </div>
+
+      <!-- 三栏布局 -->
+      <div style="display:grid;grid-template-columns:240px 1fr 320px;gap:1.5rem;margin-top:1rem;">
+        <!-- 左侧：知识库管理 -->
+        <div class="demo-panel">
+          <div class="demo-panel-header">
+            <h3><i class="fa-solid fa-database"></i> 知识库</h3>
+          </div>
+          <div class="demo-panel-body" style="padding:1rem;">
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:1rem;">已预载文档：</p>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="padding:10px 12px;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.2);border-radius:10px;font-size:0.8rem;">
+                <i class="fa-solid fa-file-lines" style="color:#34d399;margin-right:6px;"></i>
+                product-specs.md
+                <span style="display:block;font-size:0.7rem;color:var(--text-muted);margin-top:2px;">产品规格手册</span>
+              </div>
+              <div style="padding:10px 12px;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.2);border-radius:10px;font-size:0.8rem;">
+                <i class="fa-solid fa-file-lines" style="color:#34d399;margin-right:6px;"></i>
+                faq.md
+                <span style="display:block;font-size:0.7rem;color:var(--text-muted);margin-top:2px;">常见问题</span>
+              </div>
+              <div style="padding:10px 12px;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.2);border-radius:10px;font-size:0.8rem;">
+                <i class="fa-solid fa-file-lines" style="color:#34d399;margin-right:6px;"></i>
+                after-sales.md
+                <span style="display:block;font-size:0.7rem;color:var(--text-muted);margin-top:2px;">售后服务政策</span>
+              </div>
+            </div>
+
+            <!-- 上传新文档 -->
+            <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06);">
+              <input type="file" id="ragUpload" accept=".pdf,.md,.txt,.doc,.docx" style="display:none;">
+              <button class="preset-btn" id="ragUploadBtn" style="width:100%;justify-content:center;padding:8px;">
+                <i class="fa-solid fa-plus"></i> 上传文档
+              </button>
+              <div id="ragUploadStatus" style="font-size:0.75rem;color:var(--text-muted);margin-top:6px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 中间：对话窗口 -->
+        <div class="demo-panel">
+          <div class="demo-panel-header">
+            <h3><i class="fa-solid fa-comments"></i> RAG 对话</h3>
+            <span style="font-size:0.75rem;color:var(--text-muted);">基于知识库检索增强</span>
+          </div>
+          <div class="chat-messages" id="ragMessages" style="min-height:350px;">
+            <div class="chat-msg chat-msg-ai">
+              <div class="chat-msg-avatar"><i class="fa-solid fa-robot"></i></div>
+              <div class="chat-msg-content">
+                你好！我已加载 ChronoTech 产品文档，可以回答产品规格、售后政策等问题。试试问我"手表保修期是多久？"
+              </div>
+            </div>
+          </div>
+          <div class="demo-input-group">
+            <input type="text" class="demo-input" id="ragInput" placeholder="基于知识库提问..." autocomplete="off">
+            <button class="demo-send-btn" id="ragSendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+        </div>
+
+        <!-- 右侧：检索来源 -->
+        <div class="demo-panel">
+          <div class="demo-panel-header">
+            <h3><i class="fa-solid fa-search"></i> 检索来源</h3>
+          </div>
+          <div class="demo-panel-body" id="ragSources" style="min-height:350px;overflow-y:auto;">
+            <div style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:3rem 1rem;">
+              <i class="fa-solid fa-magnifying-glass-chart" style="font-size:1.5rem;margin-bottom:0.5rem;display:block;"></i>
+              提问后，这里会展示检索命中的文档块和相似度分数
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/demo-rag.js"></script>
+</body>
+</html>

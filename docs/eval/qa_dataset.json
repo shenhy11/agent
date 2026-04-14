@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "question": "ChronoTech Sport X2 Pro的手表玻璃是什么材质的？",
+    "expected_answer": "蓝宝石玻璃",
+    "relevant_doc_ids": ["product-spec.txt", "产品规格", "Sport X2 Pro"]
+  },
+  {
+    "id": "2",
+    "question": "如果在水下按了手表的按键，售后还管保修吗？",
+    "expected_answer": "在水下按键导致手表进水不在保修范围内，属于人为损坏。",
+    "relevant_doc_ids": ["after-sales.md", "售后", "保修政策"]
+  },
+  {
+    "id": "3",
+    "question": "Elite E2 和 Sport X2 Pro 哪个更轻？",
+    "expected_answer": "Elite E2更轻，钛合金表壳重量42g，而Sport X2 Pro重量为55g。",
+    "relevant_doc_ids": ["product-spec.txt", "Elite E2"]
+  },
+  {
+    "id": "4",
+    "question": "我刚买的表屏幕不亮了怎么回事？",
+    "expected_answer": "可能处于省电模式或电量耗尽，请先尝试充电，或长按电源键强制重启。如果仍不亮，建议联系售后。",
+    "relevant_doc_ids": ["faq.md", "屏幕不亮", "常见问题"]
+  },
+  {
+    "id": "5",
+    "question": "Classic C1的表带能自己换其它牌子的吗？",
+    "expected_answer": "可以，由于采用标准的22mm生耳设计，除了官方表带还可以替换为其它通用22mm表带。",
+    "relevant_doc_ids": ["faq.md", "表带", "Classic C1"]
+  }
+]

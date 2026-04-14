@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大模型微调对比 — ChronoTech AI Lab</title>
+  <meta name="description" content="Base Model 与经垂直业务语料微调的 LoRA Model 对调测比较。">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <style>
+    .compare-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    @media (max-width: 768px) {
+      .compare-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    .model-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .model-header {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .model-body {
+      flex: 1;
+      padding: 1rem;
+      background: rgba(0,0,0,0.2);
+      min-height: 300px;
+      max-height: 500px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="logo-icon"><i class="fa-solid fa-stopwatch"></i></div>
+        <span>ChronoTech</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">首页</a></li>
+        <li><a href="products.html" class="nav-link">产品中心</a></li>
+        <li><a href="about.html" class="nav-link">关于我们</a></li>
+        <li><a href="contact.html" class="nav-link">联系我们</a></li>
+        <li><a href="ai-lab.html" class="nav-link active">🧪 AI Lab</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="demo-page">
+    <div class="container">
+      <a href="ai-lab.html" class="demo-back"><i class="fa-solid fa-arrow-left"></i> 返回 AI Lab</a>
+      <div class="demo-header">
+        <h1><i class="fa-solid fa-scale-balanced" style="color:var(--accent-orange)"></i> SFT 微调模型对比</h1>
+        <p>输入测试问题，同时观察 Qwen2-7B-Base 与注入 ChronoTech 客服语料的 LoRA 模型输出差异</p>
+      </div>
+
+      <div class="demo-input-group" style="margin-top: 2rem;">
+        <input type="text" class="demo-input" id="compareInput" placeholder="请输入测试问题，如：屏幕摔碎了能保修吗？">
+        <button class="demo-send-btn" id="compareSendBtn"><i class="fa-solid fa-paper-plane"></i> 对比</button>
+      </div>
+      <div class="preset-questions" style="margin-top: 1rem;">
+        <button class="preset-btn">屏幕摔碎了能保修吗？</button>
+        <button class="preset-btn">Classic C1的手表带能换吗？</button>
+      </div>
+
+      <div class="compare-container">
+        <!-- Base Model -->
+        <div class="model-panel">
+          <div class="model-header">
+            <i class="fa-solid fa-cube" style="color:var(--text-muted);"></i>
+            <span style="font-weight:600;">基础模型 (Qwen-7B-Chat)</span>
+          </div>
+          <div class="model-body" id="baseOutput">
+            <span style="color:var(--text-muted);"><i class="fa-solid fa-circle-play"></i> 等待输入...</span>
+          </div>
+        </div>
+
+        <!-- LoRA Model -->
+        <div class="model-panel">
+          <div class="model-header">
+            <i class="fa-solid fa-gem" style="color:var(--accent-orange);"></i>
+            <span style="font-weight:600;">专用模型 (LoRA + SFT)</span>
+          </div>
+          <div class="model-body" id="loraOutput" style="border: 1px solid rgba(251, 146, 60, 0.2);">
+            <span style="color:var(--text-muted);"><i class="fa-solid fa-circle-play"></i> 等待输入...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/demo-finetune.js"></script>
+</body>
+</html>

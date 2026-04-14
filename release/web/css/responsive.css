@@ -1,0 +1,264 @@
+/* ============================================
+   ChronoTech Responsive — 全站响应式适配
+   ============================================ */
+
+/* === 平板 (≤1024px) === */
+@media (max-width: 1024px) {
+  /* 导航：显示移动端菜单按钮，隐藏链接 */
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--color-bg-secondary);
+    flex-direction: column;
+    padding: calc(var(--navbar-height) + var(--space-8)) var(--space-8) var(--space-8);
+    gap: var(--space-2);
+    border-left: 1px solid var(--color-border);
+    transition: right var(--transition-normal);
+    z-index: var(--z-navbar);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .nav-link {
+    font-size: var(--text-base);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+  }
+
+  .nav-link:hover, .nav-link.active {
+    background: var(--color-bg-glass-hover);
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  .nav-actions {
+    display: none;
+  }
+
+  /* 首页 Hero 单列 */
+  .hero .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .hero-subtitle {
+    margin: 0 auto var(--space-8);
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  /* 首页产品网格 2列 */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-card:nth-child(2) {
+    transform: none !important;
+  }
+
+  /* 首页价值观 2列 */
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 产品列表页 2列 */
+  .products-showcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 关于我们简介 单列 */
+  .about-intro {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  /* 技术卡片 */
+  .tech-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .tech-grid .tech-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* 使命愿景 */
+  .mission-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  /* 联系页 单列 */
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  /* Footer 2列 */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+}
+
+/* === 手机 (≤768px) === */
+@media (max-width: 768px) {
+  /* 首页产品网格 1列 */
+  .products-grid {
+    grid-template-columns: 1fr;
+    margin-top: var(--space-8);
+  }
+
+  .products-showcase {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  /* 时间线：单列模式 */
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item,
+  .timeline-item[data-side="left"],
+  .timeline-item[data-side="right"] {
+    width: 100%;
+    left: 0;
+    padding-left: 56px;
+    padding-right: var(--space-4);
+    text-align: left;
+  }
+
+  .timeline-item[data-side="left"] .timeline-dot,
+  .timeline-item[data-side="right"] .timeline-dot {
+    left: 12px;
+    right: auto;
+  }
+
+  /* 技术卡片 1列 */
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-grid .tech-card:last-child {
+    max-width: none;
+  }
+
+  /* 联系表单行 单列 */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* 数据区 */
+  .stats-grid {
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .stat-item h3 {
+    font-size: var(--text-4xl);
+  }
+
+  /* Footer 单列 */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--space-2);
+    text-align: center;
+  }
+
+  /* section 间距缩小 */
+  .section {
+    padding: var(--space-12) 0;
+  }
+
+  /* 页面 Hero */
+  .page-hero {
+    padding: calc(var(--navbar-height) + var(--space-12)) 0 var(--space-10);
+  }
+
+  .page-hero-content h1 {
+    font-size: var(--text-3xl);
+  }
+
+  /* 对比表：允许左右滚动 */
+  .comparison-table {
+    min-width: 600px;
+  }
+}
+
+/* === 小手机 (≤480px) === */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+
+  .hero-content h1 {
+    font-size: 2rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: var(--text-base);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .filter-bar {
+    gap: var(--space-2);
+  }
+
+  .filter-btn {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+  }
+
+  .psc-image {
+    height: 200px;
+  }
+
+  .contact-form-card {
+    padding: var(--space-6);
+  }
+}

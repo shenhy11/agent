@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智能客服 Agent — ChronoTech AI Lab</title>
+  <meta name="description" content="体验 ChronoTech AI 智能客服：多轮对话、工具调用、思考链可视化">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/ai-lab.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="logo-icon"><i class="fa-solid fa-stopwatch"></i></div>
+        <span>ChronoTech</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">首页</a></li>
+        <li><a href="products.html" class="nav-link">产品中心</a></li>
+        <li><a href="about.html" class="nav-link">关于我们</a></li>
+        <li><a href="contact.html" class="nav-link">联系我们</a></li>
+        <li><a href="ai-lab.html" class="nav-link active">🧪 AI Lab</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="demo-page">
+    <div class="container">
+      <a href="ai-lab.html" class="demo-back"><i class="fa-solid fa-arrow-left"></i> 返回 AI Lab</a>
+      <div class="demo-header">
+        <h1><i class="fa-solid fa-robot" style="color:var(--accent-cyan)"></i> 智能客服 Agent</h1>
+        <p>多轮对话 · 工具调用 · 对话记忆 · SSE 流式输出 · 思考链可视化</p>
+      </div>
+
+      <!-- 预置问题 -->
+      <div class="preset-questions" style="margin-top:1.5rem;">
+        <button class="preset-btn" data-question="推荐一款适合跑步的手表">🏃 推荐跑步手表</button>
+        <button class="preset-btn" data-question="对比 Sport X2 Pro 和 Elite E2 Ultra 的区别">⚖️ 对比两款产品</button>
+        <button class="preset-btn" data-question="手表保修期是多久？屏幕碎了怎么办？">🔧 保修政策</button>
+        <button class="preset-btn" data-question="最近有什么优惠活动吗？">🎁 优惠活动</button>
+      </div>
+
+      <!-- 双栏布局 -->
+      <div style="display:grid; grid-template-columns:1fr 380px; gap:1.5rem; margin-top:1rem;">
+        <!-- 左侧：对话面板 -->
+        <div class="demo-panel" id="chatPanel">
+          <div class="demo-panel-header">
+            <h3><i class="fa-solid fa-comments"></i> 对话面板</h3>
+            <button class="preset-btn" id="clearChat" style="font-size:0.75rem;padding:4px 10px;">清空对话</button>
+          </div>
+          <div class="chat-messages" id="chatMessages">
+            <div class="chat-msg chat-msg-ai">
+              <div class="chat-msg-avatar"><i class="fa-solid fa-robot"></i></div>
+              <div class="chat-msg-content">
+                你好！👋 我是 ChronoTech 智能客服。有什么可以帮您的？可以问我产品规格、推荐手表、售后政策等问题。
+              </div>
+            </div>
+          </div>
+          <div class="demo-input-group">
+            <input type="text" class="demo-input" id="chatInput" placeholder="输入您的问题..." autocomplete="off">
+            <button class="demo-send-btn" id="chatSendBtn"><i class="fa-solid fa-paper-plane"></i> 发送</button>
+          </div>
+        </div>
+
+        <!-- 右侧：Agent 思考链 -->
+        <div class="demo-panel" id="thinkingPanel">
+          <div class="demo-panel-header">
+            <h3><i class="fa-solid fa-brain"></i> Agent 思考链</h3>
+          </div>
+          <div class="demo-panel-body" id="thinkingSteps" style="min-height:300px;max-height:500px;overflow-y:auto;">
+            <div style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:2rem 0;">
+              <i class="fa-solid fa-circle-info" style="font-size:1.5rem;margin-bottom:0.5rem;display:block;"></i>
+              发送消息后，这里会实时展示 Agent 的推理过程、工具调用和执行结果。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/demo-chat.js"></script>
+</body>
+</html>

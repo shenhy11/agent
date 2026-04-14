@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent 工作流 — ChronoTech AI Lab</title>
+  <meta name="description" content="Agent 智能体工作流演示：多步推理、工具编排、流程在视化">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/ai-lab.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="logo-icon"><i class="fa-solid fa-stopwatch"></i></div>
+        <span>ChronoTech</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">首页</a></li>
+        <li><a href="products.html" class="nav-link">产品中心</a></li>
+        <li><a href="about.html" class="nav-link">关于我们</a></li>
+        <li><a href="contact.html" class="nav-link">联系我们</a></li>
+        <li><a href="ai-lab.html" class="nav-link active">🧪 AI Lab</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="demo-page">
+    <div class="container">
+      <a href="ai-lab.html" class="demo-back"><i class="fa-solid fa-arrow-left"></i> 返回 AI Lab</a>
+      <div class="demo-header">
+        <h1><i class="fa-solid fa-diagram-project" style="color:var(--accent-cyan)"></i> Agent 工作流</h1>
+        <p>下达复杂任务 → Agent 拆解步骤 → 自主调用工具 → 综合输出结果 — 全过程可视化</p>
+      </div>
+
+      <!-- 预置任务 -->
+      <div class="preset-questions" style="margin-top:1.5rem;">
+        <button class="preset-btn" data-question="对比运动系列（Sport X2 Pro 和 Sport X1 Lite），分析各自优劣势，给出购买建议">📊 运动系列对比报告</button>
+        <button class="preset-btn" data-question="我是一个马拉松跑者，预算3000以内，帮我分析哪款手表最适合，并查询当前有没有优惠">🏃 马拉松选手推荐</button>
+        <button class="preset-btn" data-question="帮我全面了解 Elite E2 Ultra，包括规格、与竞品对比、售后政策和当前促销">🔍 旗舰全方位分析</button>
+      </div>
+
+      <!-- 双栏布局 -->
+      <div style="display:grid;grid-template-columns:1fr 420px;gap:1.5rem;margin-top:1rem;">
+        <!-- 左侧：任务输入+最终结果 -->
+        <div>
+          <!-- 任务输入 -->
+          <div class="demo-panel" style="margin-bottom:1.5rem;">
+            <div class="demo-panel-header">
+              <h3><i class="fa-solid fa-terminal"></i> 任务描述</h3>
+            </div>
+            <div class="demo-input-group">
+              <input type="text" class="demo-input" id="agentInput" placeholder="输入复杂任务，Agent 会自主规划并执行...">
+              <button class="demo-send-btn" id="agentSendBtn"><i class="fa-solid fa-rocket"></i> 执行</button>
+            </div>
+          </div>
+
+          <!-- 最终结果 -->
+          <div class="demo-panel">
+            <div class="demo-panel-header">
+              <h3><i class="fa-solid fa-file-lines"></i> 执行结果</h3>
+              <span id="agentDuration" style="font-size:0.75rem;color:var(--text-muted);"></span>
+            </div>
+            <div class="demo-panel-body" id="agentResult" style="min-height:280px;max-height:500px;overflow-y:auto;">
+              <div style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:3rem 0;">
+                <i class="fa-solid fa-gears" style="font-size:2rem;margin-bottom:0.8rem;display:block;color:var(--accent-cyan);"></i>
+                选择预置任务或输入自定义任务，Agent 将自主规划并执行
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右侧：工作流可视化 -->
+        <div class="demo-panel">
+          <div class="demo-panel-header">
+            <h3><i class="fa-solid fa-sitemap"></i> 执行流程</h3>
+          </div>
+          <div class="demo-panel-body" id="agentFlow" style="min-height:450px;max-height:600px;overflow-y:auto;">
+            <div style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:3rem 1rem;">
+              <i class="fa-solid fa-diagram-project" style="font-size:1.5rem;margin-bottom:0.5rem;display:block;"></i>
+              Agent 执行时，每一步推理和工具调用都会实时展示
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/demo-agent.js"></script>
+</body>
+</html>

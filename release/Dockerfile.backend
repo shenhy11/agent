@@ -1,0 +1,10 @@
+# 1. 基础镜像：包含 Nginx 和 JDK 21
+FROM eclipse-temurin:21-jdk-jammy AS backend
+
+# 后端工作目录
+WORKDIR /app/server
+COPY server/agent-server.jar /app/server/
+EXPOSE 8080
+
+# 启动后端
+CMD ["java", "-jar", "agent-server.jar"]

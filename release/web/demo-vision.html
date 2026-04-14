@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多模态视觉 — ChronoTech AI Lab</title>
+  <meta name="description" content="多模态图文理解：上传图片+文字提问，AI 智能分析">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/ai-lab.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="logo-icon"><i class="fa-solid fa-stopwatch"></i></div>
+        <span>ChronoTech</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">首页</a></li>
+        <li><a href="products.html" class="nav-link">产品中心</a></li>
+        <li><a href="about.html" class="nav-link">关于我们</a></li>
+        <li><a href="contact.html" class="nav-link">联系我们</a></li>
+        <li><a href="ai-lab.html" class="nav-link active">🧪 AI Lab</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="demo-page">
+    <div class="container">
+      <a href="ai-lab.html" class="demo-back"><i class="fa-solid fa-arrow-left"></i> 返回 AI Lab</a>
+      <div class="demo-header">
+        <h1><i class="fa-solid fa-eye" style="color:var(--accent-cyan)"></i> 多模态图文理解</h1>
+        <p>上传图片 + 文字提问 — AI 理解图文内容给出智能回答（基于 qwen-vl 多模态模型）</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;">
+        <!-- 左侧：上传+提问 -->
+        <div class="demo-panel">
+          <div class="demo-panel-header">
+            <h3><i class="fa-solid fa-upload"></i> 图片上传</h3>
+          </div>
+          <div class="demo-panel-body">
+            <!-- 拖拽上传区 -->
+            <div id="dropZone" style="border:2px dashed rgba(255,255,255,0.1);border-radius:16px;padding:3rem 2rem;text-align:center;cursor:pointer;transition:all 0.3s;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+              <i class="fa-solid fa-cloud-arrow-up" style="font-size:2.5rem;color:var(--accent-cyan);margin-bottom:1rem;"></i>
+              <p style="color:var(--text-secondary);font-size:0.95rem;margin-bottom:0.5rem;">拖拽图片到这里，或点击选择</p>
+              <p style="color:var(--text-muted);font-size:0.8rem;">支持 JPEG/PNG/WebP，最大 5MB</p>
+              <input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp" style="display:none;">
+            </div>
+
+            <!-- 预览区（上传后显示） -->
+            <div id="previewArea" style="display:none;margin-top:1rem;text-align:center;">
+              <img id="previewImg" style="max-width:100%;max-height:250px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);" alt="预览">
+              <button id="removeImg" style="display:block;margin:0.5rem auto;font-size:0.8rem;color:var(--text-muted);background:none;border:none;cursor:pointer;">✕ 移除图片</button>
+            </div>
+
+            <!-- 预置图片 -->
+            <div style="margin-top:1.5rem;">
+              <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.5rem;">示例图片（点击加载）</p>
+              <div class="preset-questions" style="gap:10px;">
+                <button class="preset-btn" onclick="document.getElementById('previewImg').src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80'; document.getElementById('dropZone').style.display='none'; document.getElementById('previewArea').style.display='block'; window.currentImageBlob = null; window.currentImageUrl = 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80'; document.getElementById('visionQuestion').value='这是什么型号的智能手表？它适合什么场景？'">
+                  📷 运动手表图
+                </button>
+                <button class="preset-btn" onclick="document.getElementById('previewImg').src='https://images.unsplash.com/photo-1617043786394-f977fa12eddf?auto=format&fit=crop&w=500&q=80'; document.getElementById('dropZone').style.display='none'; document.getElementById('previewArea').style.display='block'; window.currentImageBlob = null; window.currentImageUrl = 'https://images.unsplash.com/photo-1617043786394-f977fa12eddf?auto=format&fit=crop&w=500&q=80'; document.getElementById('visionQuestion').value='请描述图片中手表的表盘风格和表带材质'">
+                  📷 商务手表图
+                </button>
+                <button class="preset-btn" onclick="document.getElementById('previewImg').src='https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=500&q=80'; document.getElementById('dropZone').style.display='none'; document.getElementById('previewArea').style.display='block'; window.currentImageBlob = null; window.currentImageUrl = 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=500&q=80'; document.getElementById('visionQuestion').value='如果这块手表的屏幕出现划痕，在保修范围内吗？'">
+                  📷 屏幕细节图
+                </button>
+              </div>
+            </div>
+
+            <!-- 提问输入 -->
+            <div style="margin-top:1rem;">
+              <input type="text" class="demo-input" id="visionQuestion" placeholder="请描述您想问的问题，如：这是什么型号的手表？" style="width:100%;">
+            </div>
+            <button class="demo-send-btn" id="visionSendBtn" style="margin-top:1rem;width:100%;">
+              <i class="fa-solid fa-paper-plane"></i> 提交分析
+            </button>
+          </div>
+        </div>
+
+        <!-- 右侧：回答 -->
+        <div class="demo-panel">
+          <div class="demo-panel-header">
+            <h3><i class="fa-solid fa-comment-dots"></i> AI 回答</h3>
+            <span id="visionDuration" style="font-size:0.75rem;color:var(--text-muted);"></span>
+          </div>
+          <div class="demo-panel-body" id="visionOutput" style="min-height:300px;">
+            <div style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:3rem 0;">
+              <i class="fa-solid fa-image" style="font-size:2rem;margin-bottom:0.8rem;display:block;color:var(--accent-cyan);"></i>
+              上传一张图片并提问，AI 将分析图片内容给出回答
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/demo-vision.js"></script>
+</body>
+</html>

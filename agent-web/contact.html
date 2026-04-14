@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>联系我们 - ChronoTech | 期待您的来信</title>
+  <meta name="description" content="联系 ChronoTech，无论是产品咨询、商务合作还是售后服务，我们随时为您服务。">
+  <!-- 字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/chat-widget.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="logo-icon"><i class="fa-solid fa-stopwatch"></i></div>
+        <span>ChronoTech</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">首页</a></li>
+        <li><a href="products.html" class="nav-link">产品中心</a></li>
+        <li><a href="about.html" class="nav-link">关于我们</a></li>
+        <li><a href="contact.html" class="nav-link active">联系我们</a></li>
+        <li><a href="ai-lab.html" class="nav-link">🧪 AI Lab</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- 页面 Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="page-hero-content fade-in-up">
+        <span class="page-hero-tag"><i class="fa-solid fa-envelope"></i> 联系我们</span>
+        <h1 class="text-gradient">期待您的来信</h1>
+        <p>无论是产品咨询、商务合作还是售后服务，我们的团队随时准备为您提供帮助。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系方式 + 表单 -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+        <!-- 左侧：联系表单 -->
+        <div class="contact-form-wrapper fade-in-up">
+          <div class="contact-form-card glass-panel">
+            <h2>发送消息</h2>
+            <p class="text-muted" style="margin-bottom: var(--space-8);">填写以下表单，我们通常会在 24 小时内回复。</p>
+            <form id="contactForm" class="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contactName">姓名 <span class="required">*</span></label>
+                  <input type="text" id="contactName" name="name" placeholder="请输入您的姓名" required>
+                </div>
+                <div class="form-group">
+                  <label for="contactEmail">邮箱 <span class="required">*</span></label>
+                  <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contactPhone">联系电话</label>
+                  <input type="tel" id="contactPhone" name="phone" placeholder="13800138000">
+                </div>
+                <div class="form-group">
+                  <label for="contactSubject">咨询类型 <span class="required">*</span></label>
+                  <select id="contactSubject" name="subject" required>
+                    <option value="">请选择</option>
+                    <option value="product_inquiry">产品咨询</option>
+                    <option value="business_cooperation">商务合作</option>
+                    <option value="after_sales">售后服务</option>
+                    <option value="other">其他</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contactMessage">留言内容 <span class="required">*</span></label>
+                <textarea id="contactMessage" name="message" rows="5" placeholder="请详细描述您的需求或问题..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg" id="contactSubmitBtn">
+                <i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i>提交留言
+              </button>
+            </form>
+            <!-- 提交成功反馈 -->
+            <div class="form-success" id="formSuccess" style="display:none;">
+              <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+              <h3>提交成功！</h3>
+              <p>感谢您的来信，我们会尽快与您取得联系。</p>
+              <p class="ticket-id" id="ticketId"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右侧：联系信息 -->
+        <div class="contact-info-wrapper fade-in-up">
+          <div class="contact-info-card glass-panel">
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <h4>公司地址</h4>
+                <p>中国深圳市南山区科技园南区<br>创新大厦 28 楼</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <h4>联系电话</h4>
+                <p>400-888-8888<br>（工作日 9:00 - 18:00）</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div>
+                <h4>电子邮箱</h4>
+                <p>contact@chronotech.com<br>support@chronotech.com</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+              <div>
+                <h4>工作时间</h4>
+                <p>周一至周五：09:00 - 18:00<br>周六日：10:00 - 16:00</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 社交媒体 -->
+          <div class="social-card glass-panel">
+            <h4>关注我们</h4>
+            <div class="social-icons">
+              <a href="#" class="social-link" aria-label="微信">
+                <i class="fa-brands fa-weixin"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="微博">
+                <i class="fa-brands fa-weibo"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="抖音">
+                <i class="fa-brands fa-tiktok"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="小红书">
+                <i class="fa-solid fa-book"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ 快速答疑 -->
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-title fade-in-up">
+        <h2 class="text-gradient">常见问题</h2>
+        <p>或许这里有你想问的</p>
+      </div>
+      <div class="faq-list fade-in-up">
+        <div class="faq-item glass-panel">
+          <button class="faq-question" aria-expanded="false">
+            <span>ChronoTech 手表支持哪些手机系统？</span>
+            <i class="fa-solid fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">
+            <p>ChronoTech 全系列支持 iOS 12+ 和 Android 8.0+ 系统，通过 ChronoTech App 进行配对和管理。</p>
+          </div>
+        </div>
+        <div class="faq-item glass-panel">
+          <button class="faq-question" aria-expanded="false">
+            <span>保修政策是怎样的？</span>
+            <i class="fa-solid fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">
+            <p>所有产品享受自购买之日起 2 年质保服务（人为损坏及自然磨损除外）。表带等消耗品保修 6 个月。</p>
+          </div>
+        </div>
+        <div class="faq-item glass-panel">
+          <button class="faq-question" aria-expanded="false">
+            <span>如何购买 ChronoTech 产品？</span>
+            <i class="fa-solid fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">
+            <p>您可以通过京东、天猫官方旗舰店在线购买，也可以拨打 400-888-8888 进行电话订购，企业大批量采购请联系 business@chronotech.com。</p>
+          </div>
+        </div>
+        <div class="faq-item glass-panel">
+          <button class="faq-question" aria-expanded="false">
+            <span>手表的防水等级是什么意思？</span>
+            <i class="fa-solid fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">
+            <p>5ATM 适合日常防泼水和游泳；10ATM 可用于自由潜水（100米以内）。注意：热水浴和桑拿温度可能影响防水胶圈，不建议在高温水环境佩戴。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand" style="font-size: 1.5rem;">
+            <div class="logo-icon" style="width: 24px; height: 24px; font-size: 0.8rem;"><i class="fa-solid fa-stopwatch"></i></div>
+            <span>ChronoTech</span>
+          </a>
+          <p>打破传统，重新定义腕上科技装备。</p>
+        </div>
+        <div>
+          <h4 class="footer-title">快速链接</h4>
+          <div class="footer-links">
+            <a href="products.html" class="footer-link">产品中心</a>
+            <a href="about.html" class="footer-link">关于我们</a>
+            <a href="contact.html" class="footer-link">联系我们</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">支持服务</h4>
+          <div class="footer-links">
+            <a href="#" class="footer-link">产品说明书</a>
+            <a href="#" class="footer-link">保修政策</a>
+            <a href="contact.html" class="footer-link">联系我们</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">关注我们</h4>
+          <div class="footer-links" style="flex-direction: row; gap: var(--space-4); font-size: 1.5rem;">
+            <a href="#" class="footer-link"><i class="fa-brands fa-weixin"></i></a>
+            <a href="#" class="footer-link"><i class="fa-brands fa-weibo"></i></a>
+            <a href="#" class="footer-link"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 ChronoTech Technologies Co., Ltd.</span>
+        <span>京ICP备20268888号</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 智能客服组件容器 -->
+  <div id="ai-chat-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/chat-widget.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NLP 工具箱 — ChronoTech AI Lab</title>
+  <meta name="description" content="NLP 文本分析工具箱：文本摘要、情感分析、关键词提取、多语翻译">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/ai-lab.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="logo-icon"><i class="fa-solid fa-stopwatch"></i></div>
+        <span>ChronoTech</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">首页</a></li>
+        <li><a href="products.html" class="nav-link">产品中心</a></li>
+        <li><a href="about.html" class="nav-link">关于我们</a></li>
+        <li><a href="contact.html" class="nav-link">联系我们</a></li>
+        <li><a href="ai-lab.html" class="nav-link active">🧪 AI Lab</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="demo-page">
+    <div class="container">
+      <a href="ai-lab.html" class="demo-back"><i class="fa-solid fa-arrow-left"></i> 返回 AI Lab</a>
+      <div class="demo-header">
+        <h1><i class="fa-solid fa-language" style="color:var(--accent-cyan)"></i> NLP 工具箱</h1>
+        <p>文本摘要 · 情感分析 · 关键词提取 · 中英翻译 — 全部通过 Prompt Engineering 实现</p>
+      </div>
+
+      <!-- Tab 切换 -->
+      <div class="nlp-tabs" style="display:flex;gap:4px;margin-top:1.5rem;background:rgba(255,255,255,0.03);border-radius:14px;padding:4px;">
+        <button class="nlp-tab active" data-tab="summarize"><i class="fa-solid fa-compress"></i> 文本摘要</button>
+        <button class="nlp-tab" data-tab="sentiment"><i class="fa-solid fa-face-smile"></i> 情感分析</button>
+        <button class="nlp-tab" data-tab="keywords"><i class="fa-solid fa-tags"></i> 关键词</button>
+        <button class="nlp-tab" data-tab="translate"><i class="fa-solid fa-globe"></i> 翻译</button>
+      </div>
+
+      <!-- 双栏：输入+输出 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1rem;">
+        <!-- 左侧：输入 -->
+        <div class="demo-panel">
+          <div class="demo-panel-header">
+            <h3><i class="fa-solid fa-pen-to-square"></i> 输入文本</h3>
+            <button class="preset-btn" id="fillExample" style="font-size:0.75rem;padding:4px 10px;">📝 填入示例</button>
+          </div>
+          <div class="demo-panel-body">
+            <textarea id="nlpInput" style="width:100%;min-height:250px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1rem;color:var(--text-primary);font-size:0.9rem;line-height:1.6;resize:vertical;outline:none;" placeholder="请输入或粘贴需要分析的文本..."></textarea>
+
+            <!-- 翻译目标语言（仅翻译 Tab 显示） -->
+            <div id="translateOptions" style="display:none;margin-top:0.8rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);margin-right:8px;">目标语言：</label>
+              <select id="targetLang" style="padding:6px 12px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--text-primary);font-size:0.85rem;">
+                <option value="en">英文 (English)</option>
+                <option value="zh">中文 (Chinese)</option>
+              </select>
+            </div>
+
+            <button class="demo-send-btn" id="nlpAnalyze" style="margin-top:1rem;width:100%;">
+              <i class="fa-solid fa-bolt"></i> 开始分析
+            </button>
+          </div>
+        </div>
+
+        <!-- 右侧：输出 -->
+        <div class="demo-panel">
+          <div class="demo-panel-header">
+            <h3><i class="fa-solid fa-chart-bar"></i> 分析结果</h3>
+            <span id="nlpDuration" style="font-size:0.75rem;color:var(--text-muted);"></span>
+          </div>
+          <div class="demo-panel-body" id="nlpOutput" style="min-height:250px;">
+            <div style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:3rem 0;">
+              <i class="fa-solid fa-sparkles" style="font-size:2rem;margin-bottom:0.8rem;display:block;color:var(--accent-cyan);"></i>
+              在左侧输入文本，选择分析功能后点击"开始分析"
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .nlp-tab {
+      flex:1; padding:10px 16px; border-radius:10px; border:none;
+      background:transparent; color:var(--text-muted); font-size:0.85rem;
+      font-weight:500; cursor:pointer; transition:all 0.2s;
+      display:flex; align-items:center; justify-content:center; gap:6px;
+    }
+    .nlp-tab:hover { color:var(--text-primary); background:rgba(255,255,255,0.05); }
+    .nlp-tab.active {
+      background:linear-gradient(135deg,rgba(0,198,255,0.15),rgba(0,114,255,0.15));
+      color:var(--accent-cyan); font-weight:600;
+    }
+    .sentiment-badge {
+      display:inline-flex; align-items:center; gap:6px; padding:8px 20px;
+      border-radius:20px; font-size:1rem; font-weight:600; margin-bottom:1rem;
+    }
+    .sentiment-positive { background:rgba(52,211,153,0.15); color:#34d399; border:1px solid rgba(52,211,153,0.3); }
+    .sentiment-negative { background:rgba(248,113,113,0.15); color:#f87171; border:1px solid rgba(248,113,113,0.3); }
+    .sentiment-neutral { background:rgba(251,191,36,0.15); color:#fbbf24; border:1px solid rgba(251,191,36,0.3); }
+    .keyword-tag {
+      display:inline-block; padding:5px 14px; border-radius:16px; margin:4px;
+      font-size:0.82rem; background:rgba(0,198,255,0.08); border:1px solid rgba(0,198,255,0.2);
+      color:var(--accent-cyan); transition:all 0.2s;
+    }
+    .keyword-tag:hover { background:rgba(0,198,255,0.15); }
+  </style>
+
+  <script src="js/main.js"></script>
+  <script src="js/demo-nlp.js"></script>
+</body>
+</html>
