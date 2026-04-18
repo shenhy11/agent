@@ -22,7 +22,8 @@ spring:
   ai:
     # 通义千问模型配置（通过 Spring AI Alibaba）
     dashscope:
-      api-key: sk-45860ea7946e4162a8ed67610dcb774b
+      # API-Key 通过环境变量注入，禁止硬编码
+      api-key: ${DASHSCOPE_API_KEY:}
       chat:
         options:
           model: qwen-plus
@@ -115,4 +116,14 @@ logging:
     org.springframework.ai: DEBUG
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# ===== JWT 配置 =====
+jwt:
+  # 签名密钥通过环境变量注入（建议至少 256 位）
+  secret: ${JWT_SECRET:changeme-replace-in-production-env-256bit}
+  # Access Token 有效期（毫秒），默认 2 小时
+  access-token-expiration: 7200000
+  # Refresh Token 有效期（毫秒），默认 7 天
+  refresh-token-expiration: 604800000
+
 
