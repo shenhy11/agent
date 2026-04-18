@@ -33,15 +33,15 @@
 
 ## 阶段三：前端现代化 (React + Next.js 14)
 
-- [ ] 3.1 初始化 Next.js 14 项目：`npx create-next-app@latest agent-next --typescript --tailwind --app`，安装 Shadcn/ui / Zustand / axios
-- [ ] 3.2 配置 Shadcn/ui：`npx shadcn-ui@latest init`，选择 Dark 主题
-- [ ] 3.3 创建全局布局 `app/layout.tsx`：假边栏 + 顶部导航栏 + 主内容区
-- [ ] 3.4 创建 `lib/auth.ts`：登录/登出/Token 管理函数
-- [ ] 3.5 创建 `store/` 中的 Zustand Store：authStore / chatStore / nlpStore / visionStore
-- [ ] 3.6 创建 `lib/axios.ts`：axios 实例 + 请求拦截器 (JWT 注入) + 响应拦截器 (401 跳转)
-- [ ] 3.7 创建 `middleware.ts`：Next.js Middleware 路由守卫，未登录跳转 `/login`
-- [ ] 3.8 创建 `app/login/page.tsx`：登录页面 + Shadcn Form 表单
-- [ ] 3.9 创建 `app/page.tsx`：Dashboard 首页
+- [x] 3.1 初始化 Next.js 14 项目：`npx create-next-app@latest agent-next --typescript --tailwind --app`，安装 Shadcn/ui / Zustand / axios
+- [x] 3.2 配置 Shadcn/ui：`npx shadcn-ui@latest init`，选择 Dark 主题
+- [x] 3.3 创建全局布局 `app/layout.tsx`：假边栏 + 顶部导航栏 + 主内容区
+- [x] 3.4 创建 `lib/auth.ts`：登录/登出/Token 管理函数
+- [x] 3.5 创建 `store/` 中的 Zustand Store：authStore / chatStore / nlpStore / visionStore
+- [x] 3.6 创建 `lib/axios.ts`：axios 实例 + 请求拦截器 (JWT 注入) + 响应拦截器 (401 跳转)
+- [x] 3.7 创建 `middleware.ts`：Next.js Middleware 路由守卫，未登录跳转 `/login`
+- [x] 3.8 创建 `app/login/page.tsx`：登录页面 + Shadcn Form 表单
+- [x] 3.9 创建 `app/page.tsx`：Dashboard 首页
 - [ ] 3.10 创建 `app/ai-lab/page.tsx`：AI 能力展厅主页（迁移自 ai-lab.html）
 - [ ] 3.11 创建 `app/ai-lab/chat/page.tsx`：智能客服对话页（迁移自 demo-chat.html）
 - [ ] 3.12 创建 `app/ai-lab/nlp/page.tsx`：NLP 文本分析页（迁移自 demo-nlp.html，含 8 个 Tab）
