@@ -42,15 +42,15 @@
 - [x] 3.7 创建 `middleware.ts`：Next.js Middleware 路由守卫，未登录跳转 `/login`
 - [x] 3.8 创建 `app/login/page.tsx`：登录页面 + Shadcn Form 表单
 - [x] 3.9 创建 `app/page.tsx`：Dashboard 首页
-- [ ] 3.10 创建 `app/ai-lab/page.tsx`：AI 能力展厅主页（迁移自 ai-lab.html）
-- [ ] 3.11 创建 `app/ai-lab/chat/page.tsx`：智能客服对话页（迁移自 demo-chat.html）
-- [ ] 3.12 创建 `app/ai-lab/nlp/page.tsx`：NLP 文本分析页（迁移自 demo-nlp.html，含 8 个 Tab）
-- [ ] 3.13 创建 `app/ai-lab/vision/page.tsx`：多模态图文页（迁移自 demo-vision.html，含 5 个 Tab）
-- [ ] 3.14 创建 `app/ai-lab/rag/page.tsx`：RAG 知识库页（迁移自 demo-rag.html）
-- [ ] 3.15 创建 `app/ai-lab/agent/page.tsx`：Agent 编排页（迁移自 demo-agent.html）
-- [ ] 3.16 创建 `app/admin/users/page.tsx`：用户管理页（ADMIN）
-- [ ] 3.17 创建 `app/admin/audit/page.tsx`：审计日志页（ADMIN）
-- [ ] 3.18 验证：所有页面功能与原 HTML 版保持一致
+- [x] 3.10 创建 `app/ai-lab/page.tsx`：AI 能力展厅主页（迁移自 ai-lab.html）
+- [x] 3.11 创建 `app/ai-lab/chat/page.tsx`：智能客服对话页（迁移自 demo-chat.html）
+- [x] 3.12 创建 `app/ai-lab/nlp/page.tsx`：NLP 文本分析页（迁移自 demo-nlp.html，含 8 个 Tab）
+- [x] 3.13 创建 `app/ai-lab/vision/page.tsx`：多模态图文页（迁移自 demo-vision.html，含 5 个 Tab）
+- [x] 3.14 创建 `app/ai-lab/rag/page.tsx`：RAG 知识库页（迁移自 demo-rag.html）
+- [x] 3.15 创建 `app/ai-lab/agent/page.tsx`：Agent 编排页（迁移自 demo-agent.html）
+- [x] 3.16 创建 `app/admin/users/page.tsx`：用户管理页（ADMIN）
+- [x] 3.17 创建 `app/admin/audit/page.tsx`：审计日志页（ADMIN）
+- [x] 3.18 验证：所有页面功能与原 HTML 版保持一致（需最后联调验证）
 
 ## 阶段四：可观测性与部署
 
