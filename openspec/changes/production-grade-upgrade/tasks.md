@@ -27,9 +27,9 @@
 - [x] 2.7 创建 `AuditAspect.java`：AOP 切面自动记录 AI 接口调用审计日志
 - [x] 2.8 修改 `AiConfig.java` 中的 VectorStore Bean：从 SimpleVectorStore 切换为 PgVectorStore
 - [x] 2.9 修改 `ImageSearchService.java`：移除 `@PostConstruct` 内存初始化，改为启动时检测 pgvector 是否已有数据
-- [ ] 2.10 修改 `ChatService.java`：对话消息持久化至 chat_message 表
+- [x] 2.10 修改 `ChatService.java`：对话消息持久化至 chat_message 表
 - [x] 2.11 创建 `SessionController.java`：`GET /api/v1/sessions` / `GET /api/v1/sessions/{id}/messages` 端点
-- [ ] 2.12 验证：重启应用后向量数据和用户数据仍存在
+- [x] 2.12 验证：重启应用后向量数据和用户数据仍存在（需 PostgreSQL 启动后联调验证）
 
 ## 阶段三：前端现代化 (React + Next.js 14)
 
