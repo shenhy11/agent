@@ -6,6 +6,8 @@ services:
     image: pgvector/pgvector:pg16
     container_name: agent-postgres
     restart: unless-stopped
+    mem_limit: 512m          # 硬上限：PostgreSQL 小数据量 512MB 足够
+    mem_reservation: 256m   # 软保留：宿主机内存紧张时至少保证 256MB
     environment:
       POSTGRES_DB: ${DB_NAME:-agent_db}
       POSTGRES_USER: ${DB_USERNAME:-postgres}
@@ -27,6 +29,8 @@ services:
     image: redis:7-alpine
     container_name: agent-redis
     restart: unless-stopped
+    mem_limit: 256m          # 硬上限：Redis 作缓存轻量使用
+    mem_reservation: 64m    # 软保留：极小，不抢占 JVM 资源
     ports:
       - "6380:6379"        # 宿主机 6380，避开 zioncom 已用 6379
     volumes:
@@ -44,6 +48,8 @@ services:
       dockerfile: docker/Dockerfile.backend
     container_name: agent-backend
     restart: unless-stopped
+    mem_limit: 1024m         # 硬上限：JVM 加 AI 推理最多 1GB，超出即重启
+    mem_reservation: 512m   # 软保留：保证 JVM 基础运行内存
     environment:
       # 数据库连接
       DB_HOST: postgres
@@ -83,6 +89,8 @@ services:
       dockerfile: docker/Dockerfile.frontend
     container_name: agent-nginx
     restart: unless-stopped
+    mem_limit: 128m          # 硬上限：Nginx 静态代理极轻量
+    mem_reservation: 32m    # 软保留：极小占用
     ports:
       - "18080:80"         # 宿主机 18080，避开 zioncom 已占 80/443
       # 如需 HTTPS，未来可配置 Nginx 接管初始化权限
