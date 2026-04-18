@@ -1,0 +1,44 @@
+# ===== Stage 1: Build Stage =====
+FROM eclipse-temurin:21-jdk-jammy AS builder
+
+WORKDIR /build
+
+# 先复制 pom.xml，利用 Docker 层缓存跳过依赖下载
+COPY pom.xml ./
+COPY agent-server/pom.xml agent-server/
+
+# 下载依赖（离线使用）
+RUN apt-get update && apt-get install -y maven && \
+    mvn dependency:go-offline -pl agent-server -am -q 2>/dev/null || true
+
+# 复制源码并编译打包
+COPY agent-server/src agent-server/src
+RUN mvn package -pl agent-server -am -DskipTests -q
+
+# ===== Stage 2: Run Stage =====
+FROM eclipse-temurin:21-jre-jammy
+
+LABEL maintainer="ChronoTech Team <dev@chronotech.ai>"
+
+WORKDIR /app
+
+# 创建非 root 运行用户（最小权限原则）
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+
+# 从构建阶段复制 JAR
+COPY --from=builder /build/agent-server/target/agent-server-*.jar app.jar
+
+# 日志目录
+RUN mkdir -p /app/logs && chown -R appuser:appuser /app
+
+USER appuser
+
+EXPOSE 8080
+
+# JVM 参数：容器友好设置（自动检测可用内存）
+ENTRYPOINT ["java", \
+  "-XX:+UseContainerSupport", \
+  "-XX:InitialRAMPercentage=25.0", \
+  "-XX:MaxRAMPercentage=75.0", \
+  "-Dspring.profiles.active=prod", \
+  "-jar", "app.jar"]

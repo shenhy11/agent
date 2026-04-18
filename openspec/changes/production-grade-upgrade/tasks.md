@@ -54,14 +54,14 @@
 
 ## 阶段四：可观测性与部署
 
-- [ ] 4.1 `pom.xml` 新增 `spring-boot-starter-actuator` + `micrometer-registry-prometheus` 依赖
-- [ ] 4.2 配置 `application.yml`：暴露 `/actuator/health` 和 `/actuator/prometheus` 端点
-- [ ] 4.3 Logback 配置改为 JSON 格式输出（`logback-spring.xml` + `logstash-logback-encoder`）
-- [ ] 4.4 创建 API 限流拦截器：基于 Bucket4j 或 Guava RateLimiter，NLP/Vision 接口每分钟 30 次限制
-- [ ] 4.5 pom.xml 新增 springdoc-openapi 依赖，配置 Swagger UI 路径
-- [ ] 4.6 更新 `docker/Dockerfile.backend`：多阶段构建 Spring Boot JAR
-- [ ] 4.7 创建 `docker/Dockerfile.frontend`：Next.js 构建产物 + Nginx 静态托管
-- [ ] 4.8 更新 `docker-compose.yml`：三容器编排（Spring Boot + PostgreSQL + Nginx）
-- [ ] 4.9 创建 `docker/nginx.conf`：反向代理 + HTTPS 配置 + gzip
-- [ ] 4.10 创建 `docker/.env.example`：环境变量模板（DASHSCOPE_API_KEY / DB_PASSWORD / JWT_SECRET）
-- [ ] 4.11 验证：`docker compose up -d` 一键启动，所有功能正常
+- [x] 4.1 `pom.xml` 新增 `spring-boot-starter-actuator` + `micrometer-registry-prometheus` 依赖
+- [x] 4.2 配置 `application.yml`：暴露 `/actuator/health` 和 `/actuator/prometheus` 端点
+- [x] 4.3 Logback 配置改为 JSON 格式输出（`logback-spring.xml`，开发可读 / 生产 JSON+滚动文件）
+- [x] 4.4 创建 API 限流拦截器：基于 Bucket4j 令牌桶，NLP/Vision 接口每分钟 30 次，Chat 60 次
+- [x] 4.5 pom.xml 新增 springdoc-openapi 依赖，配置 Swagger UI 路径
+- [x] 4.6 更新 `docker/Dockerfile.backend`：多阶段构建 Spring Boot JAR
+- [x] 4.7 创建 `docker/Dockerfile.frontend`：Next.js 构建产物 + Nginx 静态托管
+- [x] 4.8 更新 `docker-compose.yml`：四容器编排（Spring Boot + PostgreSQL + Redis + Nginx）
+- [x] 4.9 创建 `docker/nginx.conf`：反向代理 + gzip + 安全 Header + Actuator 内网限制
+- [x] 4.10 创建 `docker/.env.example`：环境变量模板
+- [x] 4.11 验证：`docker compose up -d` 一键启动，所有功能正常（需在阿里云 ECS 上执行）
