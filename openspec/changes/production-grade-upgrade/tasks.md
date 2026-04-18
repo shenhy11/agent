@@ -18,17 +18,17 @@
 
 ## 阶段二：存储层升级
 
-- [ ] 2.1 `pom.xml` 新增 PostgreSQL 驱动 + Spring Data JPA + Flyway + spring-ai-pgvector-store 依赖
-- [ ] 2.2 `application.yml` 配置 PostgreSQL 数据源（`spring.datasource.*`）和 Flyway
-- [ ] 2.3 创建 Flyway 迁移脚本 `V1__init_schema.sql`：建 sys_user / chat_session / chat_message / audit_log 四张表
-- [ ] 2.4 创建 Flyway 迁移脚本 `V2__enable_pgvector.sql`：`CREATE EXTENSION IF NOT EXISTS vector`
-- [ ] 2.5 创建 `ChatSession` + `ChatMessage` JPA Entity 和 Repository
-- [ ] 2.6 创建 `AuditLog` JPA Entity 和 Repository
-- [ ] 2.7 创建 `AuditAspect.java`：AOP 切面自动记录 AI 接口调用审计日志
-- [ ] 2.8 修改 `AiConfig.java` 中的 VectorStore Bean：从 SimpleVectorStore 切换为 PgVectorStore
-- [ ] 2.9 修改 `ImageSearchService.java`：移除 `@PostConstruct` 内存初始化，改为启动时检测 pgvector 是否已有数据
+- [x] 2.1 `pom.xml` 新增 PostgreSQL 驱动 + Spring Data JPA + Flyway + spring-ai-pgvector-store 依赖
+- [x] 2.2 `application.yml` 配置 PostgreSQL 数据源（`spring.datasource.*`）和 Flyway
+- [x] 2.3 创建 Flyway 迁移脚本 `V1__init_schema.sql`：建 sys_user / chat_session / chat_message / audit_log 四张表
+- [x] 2.4 创建 Flyway 迁移脚本 `V2__enable_pgvector.sql`：`CREATE EXTENSION IF NOT EXISTS vector`
+- [x] 2.5 创建 `ChatSession` + `ChatMessage` JPA Entity 和 Repository
+- [x] 2.6 创建 `AuditLog` JPA Entity 和 Repository
+- [x] 2.7 创建 `AuditAspect.java`：AOP 切面自动记录 AI 接口调用审计日志
+- [x] 2.8 修改 `AiConfig.java` 中的 VectorStore Bean：从 SimpleVectorStore 切换为 PgVectorStore
+- [x] 2.9 修改 `ImageSearchService.java`：移除 `@PostConstruct` 内存初始化，改为启动时检测 pgvector 是否已有数据
 - [ ] 2.10 修改 `ChatService.java`：对话消息持久化至 chat_message 表
-- [ ] 2.11 创建 `SessionController.java`：`GET /api/v1/sessions` / `GET /api/v1/sessions/{id}/messages` 端点
+- [x] 2.11 创建 `SessionController.java`：`GET /api/v1/sessions` / `GET /api/v1/sessions/{id}/messages` 端点
 - [ ] 2.12 验证：重启应用后向量数据和用户数据仍存在
 
 ## 阶段三：前端现代化 (React + Next.js 14)

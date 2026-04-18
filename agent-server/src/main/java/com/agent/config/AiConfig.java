@@ -9,10 +9,7 @@ import com.agent.service.agent.SummarizingChatMemory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
-import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
-import org.springframework.ai.vectorstore.SimpleVectorStore;
-import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -58,14 +55,8 @@ public class AiConfig {
         return new SummarizingChatMemory(memoryClient, redisTemplate, memoryMaxMessages);
     }
 
-    /**
-     * 本地内存版向量库 Bean
-     * 临时替代 PGVector，脱离外部环境即可启动
-     */
-    @Bean
-    public VectorStore vectorStore(EmbeddingModel embeddingModel) {
-        return SimpleVectorStore.builder(embeddingModel).build();
-    }
+    // VectorStore Bean 由 spring-ai-pgvector-store-spring-boot-starter 自动配置
+    // 启动时 Spring AI 根据 spring.ai.vectorstore.pgvector.* 配置自动初始化 PgVectorStore
 
     /**
      * 默认 Primary ChatClient

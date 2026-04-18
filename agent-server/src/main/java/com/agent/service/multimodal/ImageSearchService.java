@@ -30,8 +30,23 @@ public class ImageSearchService {
 
     @jakarta.annotation.PostConstruct
     public void initProductData() {
-        log.info("初始化以图搜图产品数据...");
-        // §10.2: 编写 6 款产品的结构化视觉描述文本
+        // 检查 pgvector 中是否已有产品视觉描述数据，避免重复插入
+        try {
+            var existing = vectorStore.similaritySearch(
+                    org.springframework.ai.vectorstore.SearchRequest.builder()
+                            .query("商务智能手表")
+                            .topK(1)
+                            .build()
+            );
+            if (existing != null && !existing.isEmpty()) {
+                log.info("pgvector 中已存在产品视觉描述数据，跳过初始化");
+                return;
+            }
+        } catch (Exception e) {
+            log.warn("检查 pgvector 数据失败，将尝试写入: {}", e.getMessage());
+        }
+
+        log.info("初始化以图搜图产品数据至 pgvector...");
         List<org.springframework.ai.document.Document> docs = List.of(
             new org.springframework.ai.document.Document("这是一款银色不锈钢表带的商务智能手表，表盘圆形，黑色背景，带有日期显示。风格沉稳，适合商务场合。外围有刻度圈设计。", Map.of("docType", "product_visual", "productId", "P001", "productName", "Business Pro", "series", "Classic")),
             new org.springframework.ai.document.Document("这是一款采用橙色硅胶表带的运动智能手表，表盘全屏幕显示无刻度，黑色圆形外观，轻量化设计。风格动感，适合户外运动场景。带有明显的三颗右侧实体按键。", Map.of("docType", "product_visual", "productId", "P002", "productName", "Sport Active", "series", "Sport")),
@@ -42,11 +57,12 @@ public class ImageSearchService {
         );
         try {
             vectorStore.add(docs);
-            log.info("成功加载 6 款产品的视觉描述至 VectorStore");
-        } catch(Exception e) {
-            log.warn("向 VectorStore 加载产品视觉描述失败: {}", e.getMessage());
+            log.info("成功将 6 款产品视觉描述写入 pgvector");
+        } catch (Exception e) {
+            log.warn("写入 pgvector 产品视觉描述失败: {}", e.getMessage());
         }
     }
+
 
     /**
      * 以图搜图主流程（§10.1、10.3、10.4）
