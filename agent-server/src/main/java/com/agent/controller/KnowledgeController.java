@@ -17,7 +17,7 @@ import java.util.Map;
  * 提供文档上传、删除等知识库管理接口
  */
 @RestController
-@RequestMapping("/api/knowledge")
+@RequestMapping("/api/v1/knowledge")
 public class KnowledgeController {
     public KnowledgeController(DocumentService documentService) {
         this.documentService = documentService;

@@ -16,7 +16,7 @@ import java.util.Map;
  * 接收并处理用户提交的联系表单
  */
 @RestController
-@RequestMapping("/api/contact")
+@RequestMapping("/api/v1/contact")
 public class ContactController {
 
     private static final Logger log = LoggerFactory.getLogger(ContactController.class);

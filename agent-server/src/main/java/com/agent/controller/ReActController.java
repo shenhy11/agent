@@ -14,7 +14,7 @@ import reactor.core.publisher.Flux;
  * 为前端提供纯 ReAct 过程的可视化流
  */
 @RestController
-@RequestMapping("/api/agent")
+@RequestMapping("/api/v1/agent")
 public class ReActController {
     public ReActController(ReActEngine reActEngine) {
         this.reActEngine = reActEngine;

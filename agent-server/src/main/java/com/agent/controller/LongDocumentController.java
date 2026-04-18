@@ -11,7 +11,7 @@ import reactor.core.publisher.Flux;
  * 长文档处理控制器
  */
 @RestController
-@RequestMapping("/api/nlp")
+@RequestMapping("/api/v1/nlp")
 public class LongDocumentController {
 
     private final LongDocumentService longDocumentService;

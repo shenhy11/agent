@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 监控指控接口
  */
 @RestController
-@RequestMapping("/api/metrics")
+@RequestMapping("/api/v1/metrics")
 public class MetricsController {
     public MetricsController(AiMetricsService aiMetricsService) {
         this.aiMetricsService = aiMetricsService;

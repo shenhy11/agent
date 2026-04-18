@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
  * NER 命名实体识别独立端点
  */
 @RestController
-@RequestMapping("/api/nlp")
+@RequestMapping("/api/v1/nlp")
 public class NerController {
 
     private final NerStep nerStep;

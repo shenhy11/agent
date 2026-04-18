@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * 提供 RAG 评估运行和对比的端点
  */
 @RestController
-@RequestMapping("/api/eval")
+@RequestMapping("/api/v1/eval")
 public class EvaluationController {
     public EvaluationController(RagEvaluationService ragEvaluationService) {
         this.ragEvaluationService = ragEvaluationService;

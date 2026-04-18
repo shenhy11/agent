@@ -13,7 +13,7 @@ import java.util.Map;
  * 以图搜图控制器
  */
 @RestController
-@RequestMapping("/api/multimodal")
+@RequestMapping("/api/v1/multimodal")
 public class ImageSearchController {
 
     private final ImageSearchService imageSearchService;

@@ -16,7 +16,7 @@ import java.util.Map;
  * 提供产品列表、详情、对比接口
  */
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/api/v1/products")
 public class ProductController {
     private static final Logger log = LoggerFactory.getLogger(ProductController.class);
 

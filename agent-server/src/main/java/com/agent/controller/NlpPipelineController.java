@@ -17,7 +17,7 @@ import java.util.Map;
  * 提供多步 NLP 任务编排接口
  */
 @RestController
-@RequestMapping("/api/nlp")
+@RequestMapping("/api/v1/nlp")
 public class NlpPipelineController {
 
     private final NlpPipeline nlpPipeline;

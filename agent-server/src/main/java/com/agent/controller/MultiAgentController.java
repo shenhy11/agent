@@ -14,7 +14,7 @@ import reactor.core.publisher.Flux;
  * 提供经过 Router 分发的多 Agent 对话接口
  */
 @RestController
-@RequestMapping("/api/agent")
+@RequestMapping("/api/v1/agent")
 public class MultiAgentController {
     public MultiAgentController(RouterAgent routerAgent) {
         this.routerAgent = routerAgent;

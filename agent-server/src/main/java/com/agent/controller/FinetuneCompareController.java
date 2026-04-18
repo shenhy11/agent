@@ -14,7 +14,7 @@ import reactor.core.publisher.Flux;
  * 提供同时访问基础模型和微调模型流的端点
  */
 @RestController
-@RequestMapping("/api/finetune")
+@RequestMapping("/api/v1/finetune")
 public class FinetuneCompareController {
     private static final Logger log = LoggerFactory.getLogger(FinetuneCompareController.class);
 

@@ -18,7 +18,7 @@ import reactor.core.publisher.Flux;
  * 提供同步对话和 SSE 流式对话接口
  */
 @RestController
-@RequestMapping("/api/chat")
+@RequestMapping("/api/v1/chat")
 public class ChatController {
     public ChatController(ChatService chatService) {
         this.chatService = chatService;

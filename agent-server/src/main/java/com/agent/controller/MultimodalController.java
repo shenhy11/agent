@@ -20,7 +20,7 @@ import java.util.Set;
  * 支持：单图/多图对话、OCR 提取、OCR+LLM 分析、图片描述生成
  */
 @RestController
-@RequestMapping("/api/multimodal")
+@RequestMapping("/api/v1/multimodal")
 public class MultimodalController {
     public MultimodalController(VisionService visionService) {
         this.visionService = visionService;

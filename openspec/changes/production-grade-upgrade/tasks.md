@@ -2,18 +2,18 @@
 
 - [x] 1.1 敏感配置外部化：将 `application.yml` 中的 `dashscope.api-key` 改为 `${DASHSCOPE_API_KEY}` 环境变量引用，删除硬编码值
 - [x] 1.2 多环境配置分离：创建 `application-dev.yml` / `application-prod.yml`，共用配置保留在 `application.yml`
-- [ ] 1.3 引入 Spring Security 依赖：`pom.xml` 新增 `spring-boot-starter-security` + `jjwt` (0.12.x)
-- [ ] 1.4 创建 `JwtUtil.java`：JWT Token 生成/解析/验证工具类，支持 Access (2h) 和 Refresh (7d) 双 Token
-- [ ] 1.5 创建 `sys_user` JPA Entity 和 Repository：`SysUser.java` / `SysUserRepository.java`
-- [ ] 1.6 创建 `AuthController.java`：`POST /api/v1/auth/login` 和 `POST /api/v1/auth/refresh` 端点
-- [ ] 1.7 创建 `SecurityConfig.java`：Spring Security 过滤链配置，放行 `/api/v1/auth/**`，其余强制 JWT 校验
-- [ ] 1.8 创建 `JwtAuthenticationFilter.java`：OncePerRequestFilter，从请求头提取并验证 JWT
-- [ ] 1.9 创建 `UserService.java`：用户注册（BCrypt 加密）/ 登录 / 查询
-- [ ] 1.10 创建 `AdminController.java`：`POST /api/v1/admin/users`、`GET /api/v1/admin/users` 管理端点（ADMIN 角色限制）
-- [ ] 1.11 所有现有 Controller 路径添加 `/api/v1/` 前缀
-- [ ] 1.12 创建 `GlobalExceptionHandler.java`：`@RestControllerAdvice` 全局异常处理
-- [ ] 1.13 创建 `ErrorCode.java` 枚举：按模块定义错误码（AUTH_001 / USER_001 / NLP_001 / VISION_001 / SYS_500）
-- [ ] 1.14 创建 `BusinessException.java`：自定义业务异常类，携带 ErrorCode
+- [x] 1.3 引入 Spring Security 依赖：`pom.xml` 新增 `spring-boot-starter-security` + `jjwt` (0.12.x)
+- [x] 1.4 创建 `JwtUtil.java`：JWT Token 生成/解析/验证工具类，支持 Access (2h) 和 Refresh (7d) 双 Token
+- [x] 1.5 创建 `sys_user` JPA Entity 和 Repository：`SysUser.java` / `SysUserRepository.java`
+- [x] 1.6 创建 `AuthController.java`：`POST /api/v1/auth/login` 和 `POST /api/v1/auth/refresh` 端点
+- [x] 1.7 创建 `SecurityConfig.java`：Spring Security 过滤链配置，放行 `/api/v1/auth/**`，其余强制 JWT 校验
+- [x] 1.8 创建 `JwtAuthenticationFilter.java`：OncePerRequestFilter，从请求头提取并验证 JWT
+- [x] 1.9 创建 `UserService.java`：用户注册（BCrypt 加密）/ 登录 / 查询
+- [x] 1.10 创建 `AdminController.java`：`POST /api/v1/admin/users`、`GET /api/v1/admin/users` 管理端点（ADMIN 角色限制）
+- [x] 1.11 所有现有 Controller 路径添加 `/api/v1/` 前缀
+- [x] 1.12 创建 `GlobalExceptionHandler.java`：`@RestControllerAdvice` 全局异常处理
+- [x] 1.13 创建 `ErrorCode.java` 枚举：按模块定义错误码（AUTH_001 / USER_001 / NLP_001 / VISION_001 / SYS_500）
+- [x] 1.14 创建 `BusinessException.java`：自定义业务异常类，携带 ErrorCode
 - [ ] 1.15 验证：启动后调用 `/api/v1/auth/login` 获取 Token，携带 Token 访问 NLP 接口成功
 
 ## 阶段二：存储层升级

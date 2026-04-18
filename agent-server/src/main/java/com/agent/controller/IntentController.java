@@ -14,7 +14,7 @@ import java.util.Map;
  * 支持 LLM/规则引擎/双模式对比
  */
 @RestController
-@RequestMapping("/api/nlp")
+@RequestMapping("/api/v1/nlp")
 public class IntentController {
 
     private final IntentStep intentStep;

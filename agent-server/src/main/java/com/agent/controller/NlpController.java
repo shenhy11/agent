@@ -14,7 +14,7 @@ import java.util.Map;
  * 提供摘要、情感分析、关键词提取、翻译接口
  */
 @RestController
-@RequestMapping("/api/nlp")
+@RequestMapping("/api/v1/nlp")
 public class NlpController {
     public NlpController(TextAnalysisService textAnalysisService) {
         this.textAnalysisService = textAnalysisService;
