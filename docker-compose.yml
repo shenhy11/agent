@@ -1,4 +1,4 @@
-name: chronotech-ai-lab
+name: agent-platform
 
 services:
   # ===== PostgreSQL + pgvector =====
@@ -11,7 +11,7 @@ services:
       POSTGRES_USER: ${DB_USERNAME:-postgres}
       POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD must be set}
     ports:
-      - "5432:5432"
+      - "5433:5432"        # 宿主机 5433，避开 zioncom 已用 5432
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./docker/init-db.sql:/docker-entrypoint-initdb.d/init.sql:ro
@@ -28,7 +28,7 @@ services:
     container_name: agent-redis
     restart: unless-stopped
     ports:
-      - "6379:6379"
+      - "6380:6379"        # 宿主机 6380，避开 zioncom 已用 6379
     volumes:
       - redis_data:/data
     healthcheck:
@@ -84,9 +84,8 @@ services:
     container_name: agent-nginx
     restart: unless-stopped
     ports:
-      - "80:80"
-      # 如需 HTTPS，取消下行注释并挂载 SSL 证书
-      # - "443:443"
+      - "18080:80"         # 宿主机 18080，避开 zioncom 已占 80/443
+      # 如需 HTTPS，未来可配置 Nginx 接管初始化权限
     depends_on:
       backend:
         condition: service_healthy
