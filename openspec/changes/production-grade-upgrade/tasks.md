@@ -14,7 +14,7 @@
 - [x] 1.12 创建 `GlobalExceptionHandler.java`：`@RestControllerAdvice` 全局异常处理
 - [x] 1.13 创建 `ErrorCode.java` 枚举：按模块定义错误码（AUTH_001 / USER_001 / NLP_001 / VISION_001 / SYS_500）
 - [x] 1.14 创建 `BusinessException.java`：自定义业务异常类，携带 ErrorCode
-- [ ] 1.15 验证：启动后调用 `/api/v1/auth/login` 获取 Token，携带 Token 访问 NLP 接口成功
+- [x] 1.15 验证：启动后调用 `/api/v1/auth/login` 获取 Token，携带 Token 访问 NLP 接口成功
 
 ## 阶段二：存储层升级
 
