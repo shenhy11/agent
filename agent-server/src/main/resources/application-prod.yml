@@ -1,6 +1,8 @@
 # ===== 生产环境配置 =====
 # 所有敏感配置通过环境变量或阿里云 Parameter Store 注入
 spring:
+  main:
+    allow-bean-definition-overriding: true
   config:
     activate:
       on-profile: prod
