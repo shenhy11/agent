@@ -1,4 +1,20 @@
-# ===== 直接使用预编译 JAR 打包（跳过容器内 Maven 编译） =====
+# ===== Stage 1: Build Stage =====
+FROM maven:3.9.9-eclipse-temurin-21-jammy AS builder
+
+WORKDIR /build
+
+# 先复制 pom.xml，利用 Docker 层缓存
+COPY pom.xml ./
+COPY agent-server/pom.xml agent-server/
+
+# 下载依赖（允许部分失败）
+RUN mvn dependency:resolve -pl agent-server -am 2>/dev/null || true
+
+# 复制源码并编译打包
+COPY agent-server/src agent-server/src
+RUN mvn package -pl agent-server -am -DskipTests
+
+# ===== Stage 2: Run Stage =====
 FROM eclipse-temurin:21-jre-jammy
 
 LABEL maintainer="ChronoTech Team <dev@chronotech.ai>"
@@ -8,8 +24,8 @@ WORKDIR /app
 # 创建非 root 运行用户（最小权限原则）
 RUN groupadd -r appuser && useradd -r -g appuser appuser
 
-# 复制本地预编译的 JAR 包
-COPY agent-server/target/agent-server-1.0.0-SNAPSHOT.jar app.jar
+# 从构建阶段复制 JAR
+COPY --from=builder /build/agent-server/target/agent-server-*.jar app.jar
 
 # 日志目录
 RUN mkdir -p /app/logs && chown -R appuser:appuser /app
