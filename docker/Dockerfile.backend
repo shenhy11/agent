@@ -1,5 +1,5 @@
 # ===== Stage 1: Build Stage =====
-FROM eclipse-temurin:21-jdk-jammy AS builder
+FROM maven:3.9-eclipse-temurin-21-jammy AS builder
 
 WORKDIR /build
 
@@ -7,9 +7,8 @@ WORKDIR /build
 COPY pom.xml ./
 COPY agent-server/pom.xml agent-server/
 
-# 下载依赖（离线使用）
-RUN apt-get update && apt-get install -y maven && \
-    mvn dependency:go-offline -pl agent-server -am -q 2>/dev/null || true
+# 下载依赖（离线使用），允许失败（某些依赖需要源码才能解析）
+RUN mvn dependency:go-offline -pl agent-server -am -q 2>/dev/null || true
 
 # 复制源码并编译打包
 COPY agent-server/src agent-server/src
