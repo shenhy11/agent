@@ -12,7 +12,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 /**
  * ChronoTech AI Lab 应用启动类
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = {
+    org.springframework.ai.autoconfigure.chat.client.ChatClientAutoConfiguration.class
+})
 @EnableJpaAuditing
 @ConfigurationPropertiesScan
 @RequiredArgsConstructor
