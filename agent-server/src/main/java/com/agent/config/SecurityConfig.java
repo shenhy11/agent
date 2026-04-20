@@ -54,6 +54,14 @@ public class SecurityConfig {
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
                 // 静态资源放行（前端 SPA）
                 .requestMatchers(HttpMethod.GET, "/", "/index.html", "/favicon.ico", "/*.js", "/*.css").permitAll()
+                // === AI Lab Demo 展示接口全部放行（无需登录） ===
+                .requestMatchers("/api/chat/**").permitAll()
+                .requestMatchers("/api/nlp/**").permitAll()
+                .requestMatchers("/api/multimodal/**").permitAll()
+                .requestMatchers("/api/rag/**").permitAll()
+                .requestMatchers("/api/agent/**").permitAll()
+                .requestMatchers("/api/products/**").permitAll()
+                .requestMatchers("/api/contact/**").permitAll()
                 // ADMIN 端点需要 ADMIN 角色
                 .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
                 // 其他所有请求需要认证
