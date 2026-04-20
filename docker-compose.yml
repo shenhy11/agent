@@ -89,7 +89,7 @@ services:
     restart: unless-stopped
     mem_limit: 128m
     ports:
-      - "18080:80"         # 宿主机 18080，避开 zioncom 已占 80/443
+      - "80:80"            # 主站端口，替换旧版 zioncom-website
       # 如需 HTTPS，未来可配置 Nginx 接管初始化权限
     depends_on:
       backend:
