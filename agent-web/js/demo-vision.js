@@ -163,8 +163,8 @@
           }
       }
 
-      let endpoint = `/api/multimodal/${currentTab}`;
-      if (currentTab === 'search') endpoint = '/api/multimodal/search-by-image';
+      let endpoint = `/api/v1/multimodal/${currentTab}`;
+      if (currentTab === 'search') endpoint = '/api/v1/multimodal/search-by-image';
 
       const response = await fetch(`${API_BASE}${endpoint}`, {
         method: 'POST',

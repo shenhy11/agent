@@ -79,7 +79,7 @@
    * SSE 流式对话
    */
   function streamChat(message, contentEl) {
-    const url = `${API_BASE}/api/agent/multi?message=${encodeURIComponent(message)}`;
+    const url = `${API_BASE}/api/v1/agent/multi?message=${encodeURIComponent(message)}`;
     
     let fullText = '';
     let isFirstChunk = true;

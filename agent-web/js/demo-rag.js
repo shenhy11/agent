@@ -39,7 +39,7 @@
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await fetch(`${API_BASE}/api/knowledge/user-upload/upload`, {
+      const response = await fetch(`${API_BASE}/api/v1/knowledge/user-upload/upload`, {
         method: 'POST',
         body: formData
       });
@@ -68,7 +68,7 @@
     contentEl.innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
 
     // SSE 流式请求（走主 chatClient，已挂 RAG Advisor）
-    const url = `${API_BASE}/api/chat/stream?message=${encodeURIComponent(text)}&conversationId=${conversationId}`;
+    const url = `${API_BASE}/api/v1/chat/stream?message=${encodeURIComponent(text)}&conversationId=${conversationId}`;
     let fullText = '';
     let isFirst = true;
 

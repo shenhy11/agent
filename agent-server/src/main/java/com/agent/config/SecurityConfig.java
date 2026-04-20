@@ -55,13 +55,13 @@ public class SecurityConfig {
                 // 静态资源放行（前端 SPA）
                 .requestMatchers(HttpMethod.GET, "/", "/index.html", "/favicon.ico", "/*.js", "/*.css").permitAll()
                 // === AI Lab Demo 展示接口全部放行（无需登录） ===
-                .requestMatchers("/api/chat/**").permitAll()
-                .requestMatchers("/api/nlp/**").permitAll()
-                .requestMatchers("/api/multimodal/**").permitAll()
-                .requestMatchers("/api/rag/**").permitAll()
-                .requestMatchers("/api/agent/**").permitAll()
-                .requestMatchers("/api/products/**").permitAll()
-                .requestMatchers("/api/contact/**").permitAll()
+                .requestMatchers("/api/v1/chat/**").permitAll()
+                .requestMatchers("/api/v1/nlp/**").permitAll()
+                .requestMatchers("/api/v1/multimodal/**").permitAll()
+                .requestMatchers("/api/v1/knowledge/**").permitAll()
+                .requestMatchers("/api/v1/agent/**").permitAll()
+                .requestMatchers("/api/v1/products/**").permitAll()
+                .requestMatchers("/api/v1/contact/**").permitAll()
                 // ADMIN 端点需要 ADMIN 角色
                 .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
                 // 其他所有请求需要认证

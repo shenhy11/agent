@@ -42,7 +42,7 @@
     const startTime = Date.now();
 
     // 真实 SSE 请求连接 ReAct 引擎
-    const url = `${API_BASE}/api/agent/react?message=${encodeURIComponent(task)}`;
+    const url = `${API_BASE}/api/v1/agent/react?message=${encodeURIComponent(task)}`;
     let fullText = '';
     let isFirst = true;
 

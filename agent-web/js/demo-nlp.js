@@ -62,22 +62,22 @@
     const startTime = Date.now();
 
     try {
-      let endpoint = `/api/nlp/${currentTab}`;
+      let endpoint = `/api/v1/nlp/${currentTab}`;
       let body = { text };
       
       if (currentTab === 'translate') {
         body.targetLang = document.getElementById('targetLang').value;
       } else if (currentTab === 'intent') {
         const mode = document.getElementById('intentMode').value;
-        endpoint = `/api/nlp/intent?mode=${mode}`;
+        endpoint = `/api/v1/nlp/intent?mode=${mode}`;
       } else if (currentTab === 'long_doc') {
-        endpoint = '/api/nlp/long-doc';
+        endpoint = '/api/v1/nlp/long-doc';
         body.task = document.getElementById('longDocTask').value;
         if (body.task === 'qa') {
             body.query = document.getElementById('longDocQuery').value.trim();
         }
       } else if (currentTab === 'pipeline') {
-        endpoint = '/api/nlp/pipeline/stream';
+        endpoint = '/api/v1/nlp/pipeline/stream';
         const steps = Array.from(document.querySelectorAll('#pipelineSteps input:checked')).map(el => el.value);
         if (steps.length === 0) {
             alert('请至少勾选一个 Pipeline 步骤');
