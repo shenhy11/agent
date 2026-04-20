@@ -3,7 +3,7 @@
  * SSE 流式对话 + Agent 思考链渲染
  */
 (function() {
-  const API_BASE = 'http://localhost:8080';
+  const API_BASE = '';
   const chatMessages = document.getElementById('chatMessages');
   const chatInput = document.getElementById('chatInput');
   const chatSendBtn = document.getElementById('chatSendBtn');
@@ -125,7 +125,7 @@
       })
       .catch(err => {
         console.error('SSE 错误:', err);
-        contentEl.innerHTML = `<span style="color:#f87171;">⚠️ 连接失败: ${err.message}。请确保后端服务在 localhost:8080 运行。</span>`;
+        contentEl.innerHTML = `<span style="color:#f87171;">⚠️ 连接失败: ${err.message}。请刷新页面重试。</span>`;
         chatSendBtn.disabled = false;
         addThinkingStep('error', '请求异常: ' + err.message);
       });

@@ -2,7 +2,7 @@
  * 微调对比页面请求逻辑
  */
 (function() {
-  const API_BASE = 'http://localhost:8080';
+  const API_BASE = '';
   const inputEl = document.getElementById('compareInput');
   const sendBtn = document.getElementById('compareSendBtn');
   const baseOut = document.getElementById('baseOutput');

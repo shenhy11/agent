@@ -2,7 +2,7 @@
  * NLP 工具箱 Demo 交互逻辑
  */
 (function() {
-  const API_BASE = 'http://localhost:8080';
+  const API_BASE = '';
   let currentTab = 'summarize';
 
   // 示例文本
@@ -107,7 +107,7 @@
           }
       }
     } catch (err) {
-      outputEl.innerHTML = `<p style="color:#f87171;">⚠️ 请求失败: ${err.message}<br><span style="font-size:0.8rem;">请确保后端服务在 localhost:8080 运行</span></p>`;
+      outputEl.innerHTML = `<p style="color:#f87171;">⚠️ 请求失败: ${err.message}<br><span style="font-size:0.8rem;">请刷新页面重试</span></p>`;
       durationEl.textContent = '';
     }
 

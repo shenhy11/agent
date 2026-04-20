@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollToBottom();
 
         // 3. 准备要请求的 Spring Boot 后端 SSE 接口 (按需将 localhost 替换)
-        const apiUrl = 'http://localhost:8080/api/chat/stream';
+        const apiUrl = '/api/chat/stream';
 
         try {
             // 注意: 原生的 EventSource 只能发送 GET 请求。

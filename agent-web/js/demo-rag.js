@@ -3,7 +3,7 @@
  * SSE 对话 + 文档上传 + 检索来源展示
  */
 (function() {
-  const API_BASE = 'http://localhost:8080';
+  const API_BASE = '';
   const ragMessages = document.getElementById('ragMessages');
   const ragInput = document.getElementById('ragInput');
   const ragSendBtn = document.getElementById('ragSendBtn');

@@ -3,7 +3,7 @@
  * 支持多图、多模式 API
  */
 (function() {
-  const API_BASE = 'http://localhost:8080';
+  const API_BASE = '';
   let currentTab = 'chat';
   let selectedFiles = []; // File objects
   let maxImages = 1;
